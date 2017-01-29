@@ -1,0 +1,42 @@
+<div class="header">
+	<div class="col-md-12 header-section">
+		<h1 class="text-center col-md-8 col-sm-6 col-sm-offset-2 col-md-offset-2 mt-10">
+			<span class="brand">SwiftPen</span><br/>
+			<span class="brand-tagline">From professional to personal</span>
+		</h1>
+		<div class="col-md-2 col-sm-4" >
+			<button class="pull-right btn btn-sign-up" ng-click="nav.signUp()" ng-if="!loggedIn">
+				Sign Up
+			</button>
+			<button class="pull-right btn btn-sign-in" ng-if="!loggedIn" ng-click="nav.signIn()">
+				Sign In
+			</button>
+
+			<div class="hidden-xs hidden-sm mt-25">
+				<img src="{{profilePic}}" class="brad-50-per img-thumbnail" ng-if="profilePic">
+				<span class="img-thumbnail brad-50-per profile-pic" ng-if="!profilePic">
+					{{name | limitTo: 1}}
+				</span>
+				<span class="inline-block mt-20"><strong>{{name}}</strong></span>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	<nav class="navbar navbar-default navbar-static-top b-t-black">
+		<div class="container">
+			<ul class="nav navbar-nav hidden-xs hidden-sm">
+				<li class="active"><a ui-sref="home">Home</a></li>
+				<li><a ui-sref="home">Features</a></li>
+				<li><a ui-sref="home">Style</a></li>
+				<li><a ui-sref="home">Review</a></li>
+				<li><a ui-sref="home">Art</a></li>
+				<li><a ui-sref="home">Music</a></li>
+				<li><a ui-sref="home">Steals</a></li>
+				<li><a ui-sref="home">Video</a></li>
+			</ul>
+			<button ng-click="nav.openSidenav()" class="visible-sm visible-xs btn btn-sidenav">
+				<i class="glyphicon glyphicon-menu-hamburger"></i>
+			</button>
+		</div>
+	</nav>	
+</div>

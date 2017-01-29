@@ -1,0 +1,18 @@
+body {
+    font-family: Lato;
+    font-weight: 400;
+    font-style: normal;
+    text-transform: none;
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: 1px
+}
+
+$fa-font-path: "../../../../bower_components/font-awesome/fonts";
+@import "../../../../bower_components/font-awesome/scss/font-awesome.scss";
+
+
+@import 'partials/variables';
+@import 'partials/buttons';
+@import 'partials/helpers';
+@import 'partials/tags';

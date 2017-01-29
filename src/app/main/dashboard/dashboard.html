@@ -1,0 +1,44 @@
+<div id="dashboard">
+	<h1 class="container mb-40 mt-40">Post Article</h1>
+	<div class="container post-article-section mb-40">
+		<div class="row">
+			<div class="col-md-6">
+				<h4>Article Picture</h4>
+				<input type="file" ngf-select="" ng-model="dashboard.article.image" name="file" ngf-accept="'image/*'" required="">
+			</div>
+			<div class="col-md-6">
+				Preview:
+				<img ngf-thumbnail="dashboard.article.image" ng-if="dashboard.article.image" class="thumbnail">
+			</div>
+		</div>
+		<div class="row mt-40">
+			<div class="col-md-12">
+				<h4>Select Tags</h4>
+				<div class="col-md-2 tags" ng-repeat="tag in dashboard.tags">
+					<label>
+						<input type="checkbox" name="{{tag.value}}" ng-model="tag.checked" ng-change="dashboard.selectedTags()">
+						<span class="{{tag.value}} ph-10 pv-3 brad-2">{{tag.name}}</span>
+					</label>
+				</div>
+			</div>
+		</div>
+
+		<div class="row mt-40">
+			<div class="col-md-12 form-group">
+				<h4>Article Title</h4>
+				<input type="text" name="title" class="form-control" ng-model="dashboard.article.title">
+			</div>
+		</div>
+
+		<div class="row mt-40">
+			<div class="col-md-12 form-group">
+				<h4>Article Content</h4>
+				<textarea name="title" class="form-control" ng-model="dashboard.article.content"> </textarea>
+			</div>
+		</div>
+
+		<div class="row text-center">
+			<button class="btn btn-info" ng-click="dashboard.addArticle(dashboard.article)">Post Article</button>
+		</div>
+	</div>
+</div>

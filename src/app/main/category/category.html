@@ -1,0 +1,15 @@
+<div id="category">
+	<h1 class="container mb-40 mt-40">Add/ Update Category</h1>
+
+	<div class="container category-section mb-40">
+		<h3>Add New Category</h3>
+
+		<div class="form-inline">
+			<label>Name of Category</label>
+			<input type="text" name="category" class="form-control" ng-model="category.newCategory.name"/>
+			<button class="btn btn-info" ng-click="category.addCategory(category.newCategory)">
+				Add
+			</button>
+		</div>
+	</div>
+</div>

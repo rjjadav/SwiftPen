@@ -1,0 +1,59 @@
+#navigation{
+	
+	.header-section{
+		height: 100px;
+	
+		.brand{
+			color: rgb(158,0,11);
+		}
+		.brand-tagline{
+			font-weight: 700;
+			font-size: 14px;
+		}
+	}
+
+	.b-t-black {
+		border-top: 2px solid #000 !important;
+	}
+
+	.btn{
+		
+		&.btn-sign-in{
+			background: transparent;
+			margin-top:35px;
+		}
+
+		&.btn-sign-up{
+			background: #000;
+			color: #fff;
+			margin-top:35px;
+		}
+		&.btn-sidenav{
+			margin-top: 6px;
+		}
+	}
+
+	.navbar-default .navbar-nav > li > a {
+		color: #000;
+		font-family: Poppins,serif;
+		font-weight: 400;
+		font-style: normal;
+		text-transform: uppercase;
+		font-size: 14px;
+		line-height: 18px;
+		letter-spacing: 1px;
+	}
+	.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+		color: #ccc;
+		 background-color: transparent; 
+	}
+
+	.profile-pic{
+		width: 50px;
+		display: inline-block;
+		font-size: 27px;
+		text-align: center;
+		background: cadetblue;
+		color: white;
+	}
+}
