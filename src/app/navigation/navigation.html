@@ -17,7 +17,9 @@
 				<span class="img-thumbnail brad-50-per profile-pic" ng-if="!profilePic && loggedIn">
 					{{name | limitTo: 1}}
 				</span>
-				<span class="inline-block mt-20"><strong>{{name}}</strong></span>
+				<span class="inline-block mt-20" ng-if="!profilePic && loggedIn">
+					<strong>{{name}}</strong>
+				</span>
 			</div>
 		</div>
 	</div>
@@ -33,6 +35,11 @@
 				<li><a ui-sref="home">Music</a></li>
 				<li><a ui-sref="home">Steals</a></li>
 				<li><a ui-sref="home">Video</a></li>
+			</ul>
+
+			<ul class="nav navbar-nav hidden-xs hidden-sm pull-right" ng-if="loggedIn">
+				<li><a ui-sref="app.main_dashboard">Post Article</a></li>
+				<li><a ui-sref="app.main_category">Category</a></li>
 			</ul>
 			<button ng-click="nav.openSidenav()" class="visible-sm visible-xs btn btn-sidenav">
 				<i class="glyphicon glyphicon-menu-hamburger"></i>
