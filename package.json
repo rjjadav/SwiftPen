@@ -1,7 +1,10 @@
 {
   "name": "swiftPen",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "express": "^4.14.1",
+    "gzippo": "^0.2.0"
+  },
   "scripts": {
     "test": "gulp test"
   },
