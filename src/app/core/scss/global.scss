@@ -10,10 +10,10 @@ body {
 
 $fa-font-path: "../../../../bower_components/font-awesome/fonts";
 @import "../../../../bower_components/font-awesome/scss/font-awesome.scss";
-@import "../../../../bower_components/animate.css/animate.css";
+/*@import "../../../../bower_components/animate.css/animate.css";*/
 
 
-
+@import 'partials/animate';
 @import 'partials/variables';
 @import 'partials/buttons';
 @import 'partials/helpers';

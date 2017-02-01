@@ -27,7 +27,8 @@ function api(){
 		saveAccount 	: url[env].backend + '/saveAccount',
 		getArticles 	: url[env].backend + '/getArticles',
 		addArticle 		: url[env].backend + '/addArticle',
-		addCategory 	: url[env].backend + '/addCategory'
+		addCategory 	: url[env].backend + '/addCategory',
+		saveArticle 	: url[env].backend + '/saveArticle',
 	}
 
 	return config;
