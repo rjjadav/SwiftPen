@@ -2,8 +2,8 @@
 	<div class="article-img-wrap">
 		<img ng-src="/assets/images/1.png"/>
 		<!-- {{article.article.path}} -->
-		<button class="btn-save text-danger" ng-click="article.saveArticle(article.article.id)">
-			<i ng-class="save ? 'fa fa-heart bounceIn' : 'fa fa-heart-o'"  class="animated" aria-hidden="true"></i>
+		<button class="btn-save text-danger" ng-click="article.saveArticle(article.article)">
+			<i ng-class="article.article.saved ? 'fa fa-heart bounceIn' : 'fa fa-heart-o'"  class="animated" aria-hidden="true"></i>
 		</button>	
 	</div>
 

@@ -10,6 +10,7 @@ DashboardController.$inject = ['toastr','$filter','data', 'api'];
 function DashboardController(toastr, $filter, data, api){
 	var dashboard = this;
 
+	dashboard.getCategory = getCategory;
 	dashboard.selectedTags = selectedTags;
 	dashboard.addArticle = addArticle;
 
@@ -34,6 +35,15 @@ function DashboardController(toastr, $filter, data, api){
 	];
 
 
+
+	dashboard.getCategory();
+	function getCategory(){
+		data.post(api.getCategory, null, true)
+		.then(function(response){
+			console.log('getCategory ::: ',response);
+		})
+		.catch()
+	}
 
 	function selectedTags(){
 		var tags = $filter('filter')(dashboard.tags, {checked: true});

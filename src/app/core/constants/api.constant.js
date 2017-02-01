@@ -29,6 +29,8 @@ function api(){
 		addArticle 		: url[env].backend + '/addArticle',
 		addCategory 	: url[env].backend + '/addCategory',
 		saveArticle 	: url[env].backend + '/saveArticle',
+		getCategory		: url[env].backend + '/getCategory',
+		getSavedArticle : url[env].backend + '/getSavedArticle',
 	}
 
 	return config;

@@ -11,10 +11,13 @@ function ArticleController(data, api){
 	var article = this;
 	article.saveArticle = saveArticle;
 
-	function saveArticle(articleId){
-		data.post(api.saveArticle,{articleId: articleId}, false)
+	function saveArticle(articleObj){
+		data.post(api.saveArticle,{articleId: articleObj.id}, false)
 		.then(function(response){
 			console.log(response);
+			if(response.data.added){
+				articleObj.saved = true;
+			}
 		})
 		.catch(function(error){
 			console.log(error);
