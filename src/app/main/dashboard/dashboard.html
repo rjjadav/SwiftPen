@@ -13,13 +13,19 @@
 		</div>
 		<div class="row mt-40">
 			<div class="col-md-12">
-				<h4>Select Tags</h4>
-				<div class="col-md-2 tags" ng-repeat="tag in dashboard.tags">
+				<h4>Select Category</h4>
+				<select class="form-control" ng-model="dashboard.article.category">
+					<option value="">Select Category</option>
+					<option value="General">General</option>
+					<option value="Exit">Exit</option>
+					<option value="Investment">Investment</option>
+				</select>
+				<!-- <div class="col-md-2 tags" ng-repeat="tag in dashboard.tags">
 					<label>
 						<input type="checkbox" name="{{tag.value}}" ng-model="tag.checked" ng-change="dashboard.selectedTags()">
 						<span class="{{tag.value}} ph-10 pv-3 brad-2">{{tag.name}}</span>
 					</label>
-				</div>
+				</div> -->
 			</div>
 		</div>
 

@@ -19,11 +19,16 @@ function SigninController($cookies, toastr, $uibModalInstance, api, data){
 
 		data.get(api.login, user, false)
 		.then(function(response){
-			// console.log(response);
-			$cookies.put('accessToken',response.data.value);
-			$cookies.putObject('refreshToken',response.data.refreshToken);
-			$cookies.put('username', user.username);
-			$uibModalInstance.close(user);
+			console.log(response);
+			if(response.status == 200){
+				$cookies.put('accessToken',response.data.value);
+				$cookies.putObject('refreshToken',response.data.refreshToken);
+				$cookies.put('username', user.username);
+				$uibModalInstance.close(user);	
+			}else{
+				toastr.error('Invalid Email and Password', 'Error');	
+			}
+			
 		},function(error){
 			console.log(error);
 			toastr.error('Invalid Email and Password', 'Error');

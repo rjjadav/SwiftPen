@@ -30,7 +30,7 @@ function NavigationController($rootScope, $uibModal){
 
 			if(data){
 				$rootScope.loggedIn = true;
-				$rootScope.name = data.name;
+				$rootScope.name = data.name || data.username;
 				$rootScope.profilePic = undefined;
 				if(data.accountType == 'facebook'){
 					$rootScope.profilePic = data.picture.data.url;

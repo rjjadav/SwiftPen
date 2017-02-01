@@ -42,7 +42,7 @@ function DashboardController(toastr, $filter, data, api){
 	}
 
 	function addArticle(article){
-		article.category="Art";
+		// article.category="Art";
 		article.link = null;
 
 		data.upload(api.addArticle, article)

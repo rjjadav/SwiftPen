@@ -1,17 +1,25 @@
 <!-- <div class="col-md-4 col-sm-6 col-xs-12 category-wrapper text-center mb-40"> -->
 	<div class="article-img-wrap">
-		<img ng-src="{{article.article.imageUrl}}"/>
+		<img ng-src="/assets/images/1.png"/>
+		<!-- {{article.article.path}} -->
 		<button class="btn-save text-danger" ng-click="save = !save">
-			<i ng-class="save ? 'fa fa-heart' : 'fa fa-heart-o'" aria-hidden="true"></i>
+			<i ng-class="save ? 'fa fa-heart bounceIn' : 'fa fa-heart-o'"  class="animated" aria-hidden="true"></i>
 		</button>	
 	</div>
-	<ul class="list-inline category article-category clearfix text-center">
+
+	<div class="article-category mt-20">
+		<span class="cat-{{article.article.category}} font-white inline-block ph-10 brad-2">
+			{{article.article.category}}
+		</span>	
+	</div>
+	
+	<!-- <ul class="list-inline category article-category clearfix text-center">
 		<li class="entry-category" ng-repeat="tag in article.article.tags">
 			<a href="http://dahztheme.com/demo/onfleek/revival/category/art/" title="View all posts in 30" class="{{tag.value}}">
 				{{tag.name}}
 			</a>
 		</li>
-	</ul>
+	</ul> -->
 	<h3 class="article-title">{{article.article.title}}</h3>
 	<p class="article-content mv-20">
 		{{article.article.content}}
@@ -22,4 +30,4 @@
 			{{article.article.date | date: 'MMMM dd, yyyy'}}
 		</a>
 	</div>
-<!-- </div> -->
+<!-- </div>

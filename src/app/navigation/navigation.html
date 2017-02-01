@@ -13,8 +13,8 @@
 			</button>
 
 			<div class="hidden-xs hidden-sm mt-25">
-				<img src="{{profilePic}}" class="brad-50-per img-thumbnail" ng-if="profilePic">
-				<span class="img-thumbnail brad-50-per profile-pic" ng-if="!profilePic">
+				<img src="{{profilePic}}" class="brad-50-per img-thumbnail" ng-if="profilePic && loggedIn">
+				<span class="img-thumbnail brad-50-per profile-pic" ng-if="!profilePic && loggedIn">
 					{{name | limitTo: 1}}
 				</span>
 				<span class="inline-block mt-20"><strong>{{name}}</strong></span>
