@@ -12,7 +12,8 @@ function api(){
 
 	var url = {
 		dev: {
-			backend : 'http://45.56.97.181:8080/Tenga',
+			backend 	: 'http://45.56.97.181:8080/Tenga',
+			imagePath 	: 'http://45.56.97.181:8080/Tenga'
 		},
 		uat: {
 
@@ -23,6 +24,7 @@ function api(){
 	}
 
 	var config = {
+		imagePath 		: url[env].imagePath,
 		login 			: url[env].backend + '/oauth/token',
 		saveAccount 	: url[env].backend + '/saveAccount',
 		getArticles 	: url[env].backend + '/getArticles',

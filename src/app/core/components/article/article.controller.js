@@ -9,6 +9,7 @@ ArticleController.$inject = ['data', 'api'];
 
 function ArticleController(data, api){
 	var article = this;
+	article.imagePath = api.imagePath;
 	article.saveArticle = saveArticle;
 
 	function saveArticle(articleObj){

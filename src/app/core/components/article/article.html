@@ -1,6 +1,6 @@
 
 	<div class="article-img-wrap">
-		<img ng-src="/assets/images/1.png"/>
+		<img ng-src="{{article.imagePath + article.article.path}}"/>
 		<!-- {{article.article.path}} -->
 		<button class="btn-save text-danger" ng-click="article.saveArticle(article.article)">
 			<i ng-class="article.article.saved ? 'fa fa-heart bounceIn' : 'fa fa-heart-o'"  class="animated" aria-hidden="true"></i>

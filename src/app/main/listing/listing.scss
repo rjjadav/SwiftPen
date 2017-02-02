@@ -1,6 +1,14 @@
 #listing{
+	.article{
+		clear: both !important;
+	}
 	.article-img-wrap {
-		position: relative
+		position: relative;
+		img{
+			max-height: 200px;
+			width: 100% !important;
+		}
+
 	}
 
 	.list-inline, .list-unstyled {
