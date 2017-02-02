@@ -53,7 +53,7 @@ function DashboardController(toastr, $filter, data, api){
 
 	function addArticle(article){
 		// article.category="Art";
-		article.link = null;
+		// article.link = null;
 
 		data.upload(api.addArticle, article)
 		.then(function(response){
