@@ -25,6 +25,11 @@
 				  templateUrl: 'app/sidebar/sidebar.html',
 				  controller: 'SidebarController',
 				  controllerAs: 'sidebar'
+				},
+				'footer@app': {
+					templateUrl: 'app/footer/footer.html',
+					controller: function(){},
+					controllerAs: 'footer'
 				}
 			}
 		});
