@@ -8,7 +8,10 @@ angular.module('app.core')
 function articles(){
 	var options = {
 		bindings: {
-			article : '<'
+			"article" : '<',
+			"display": '<',
+			"category": '<'
+
 		},
 		templateUrl: 'app/core/components/articles/articles.html',
 		controller: 'ArticlesController',

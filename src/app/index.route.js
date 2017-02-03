@@ -35,7 +35,7 @@
 			//   controllerAs: 'main'
 			// });
 
-		$urlRouterProvider.otherwise('/');
+		$urlRouterProvider.otherwise('/articles/all');
 	}
 
 })();

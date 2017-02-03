@@ -7,6 +7,7 @@ angular.module('app.main',[
 	'app.main.listing',
 	'app.main.dashboard',
 	'app.main.category',
+	'app.main.saved_articles',
 ])
 .config(config);
 

@@ -5,27 +5,33 @@
 angular.module('app.core')
 .controller('ArticlesController', ArticlesController);
 
-ArticlesController.$inject = ['data','api'];
+ArticlesController.$inject = ['$scope','data','api'];
 
-function ArticlesController(data, api){
-	var articles = this;
-	articles.getArticles = getArticles;
-	articles.getSavedArticle = getSavedArticle;
+function ArticlesController($scope, data, api){
+	
+	var articles = $scope.articles;
+	// console.log("category :: ",articles.category);
+	// articles.getArticles = getArticles;
+	articles.getAllArticles = getAllArticles;
+	articles.getSavedArticles = getSavedArticles;
 
+	articles.dataToDisplay = articles.display || 'all'; 
 	articles.articlesList = undefined;
+	articles.savedArticles = undefined;
+	articles.selectedCategory = (articles.category == 'all' ? null : articles.category);
 
-	articles.getArticles();
+	articles.getAllArticles();
 	
 
-	function getArticles(){
-		data.post(api.getArticles, {category: null}, false)
+	function getAllArticles(){
+		data.post(api.getArticles, {category: articles.selectedCategory}, false)
 		.then(function(response){
 			articles.articlesList = response.data.articles;
-			articles.getSavedArticle();
+			articles.getSavedArticles();
 		})
 	}
 
-	function getSavedArticle(){
+	function getSavedArticles(){
 		data.post(api.getSavedArticle, null, true)
 		.then(function(response){
 			var savedArticles = response.data.articles;
@@ -37,7 +43,6 @@ function ArticlesController(data, api){
 				}
 			})
 
-
 			articles.articlesList.filter(function(ele){
 				if(savedArticlesIds.indexOf(ele.id) > -1){
 					ele.saved = true;
@@ -45,6 +50,13 @@ function ArticlesController(data, api){
 					console.log("false");
 				}
 			})
+			
+			if(articles.dataToDisplay == 'saved'){
+				var allArticles = articles.articlesList
+				articles.articlesList = allArticles.filter(function(ele){
+					return ele.saved == true;
+				})	
+			}
 		})
 	}
 }

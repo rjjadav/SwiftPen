@@ -31,7 +31,7 @@ function CategoryController(toastr, data, api){
 
 		data.post(api.addCategory, categoryObj, false)
 		.then(function(response){
-			toastr.success(JSON.stringify(response), 'success')
+			toastr.success('Category Saved', 'success')
 			category.getCategory();
 		})
 	}

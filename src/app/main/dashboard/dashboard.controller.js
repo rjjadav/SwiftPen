@@ -15,27 +15,6 @@ function DashboardController(toastr, $filter, data, api){
 	dashboard.addArticle = addArticle;
 
 
-	dashboard.tags = [
-		{name: 'Art', 			value: 'cat-Art'},
-		{name: 'Culture', 		value: 'cat-Culture'},
-		{name: 'Cycles', 		value: 'cat-Cycles'},
-		{name: 'Galleries', 	value: 'cat-Galleries'},
-		{name: 'Health', 		value: 'cat-Health'},
-		{name: 'Inspirations', 	value: 'cat-Inspirations'},
-		{name: 'Lookbook', 		value: 'cat-Lookbook'},
-		{name: 'Music', 		value: 'cat-Music'},
-		{name: 'On Trend', 		value: 'cat-On-Trend'},
-		{name: 'Places', 		value: 'cat-Places'},
-		{name: 'Review', 		value: 'cat-Review'},
-		{name: 'Steals', 		value: 'cat-Steals'},
-		{name: 'Style', 		value: 'cat-Style'},
-		{name: 'Tech', 			value: 'cat-Tech'},
-		{name: 'Uncategorized', value: 'cat-Uncategorized'},
-		{name: 'Video', 		value: 'cat-Video'},
-	];
-
-
-
 	dashboard.getCategory();
 	function getCategory(){
 		data.post(api.getCategory, null, true)
@@ -53,7 +32,7 @@ function DashboardController(toastr, $filter, data, api){
 
 	function addArticle(article){
 		// article.category="Art";
-		// article.link = null;
+		article.link = article.link || null;
 
 		data.upload(api.addArticle, article)
 		.then(function(response){

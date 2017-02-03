@@ -12,34 +12,44 @@
 				Sign In
 			</button>
 
-			<div class="hidden-xs hidden-sm mt-25">
-				<img src="{{profilePic}}" class="brad-50-per img-thumbnail" ng-if="profilePic && loggedIn">
-				<span class="img-thumbnail brad-50-per profile-pic" ng-if="!profilePic && loggedIn">
-					{{name | limitTo: 1}}
-				</span>
-				<span class="inline-block mt-20" ng-if="!profilePic && loggedIn">
-					<strong>{{name}}</strong>
-				</span>
+			<div class="hidden-xs hidden-sm mt-25 dropdown"  uib-dropdown>
+				<a class="dropdown-toggle" href uib-dropdown-toggle>
+					<img src="{{profilePic}}" class="brad-50-per img-thumbnail" ng-if="profilePic && loggedIn">
+					<span class="img-thumbnail brad-50-per profile-pic" ng-if="!profilePic && loggedIn">
+						{{name | limitTo: 1}}
+					</span>
+					<span class="inline-block mt-20" ng-if="!profilePic && loggedIn">
+						<strong>{{name}}</strong>
+					</span>
+				</a>
+
+				<ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
+					<li><a href="#" ng-click="nav.logout()">Logout</a></li>
+				</ul>
 			</div>
 		</div>
 	</div>
 	<div class="clearfix"></div>
-	<nav class="navbar navbar-default navbar-static-top b-t-black">
+	<nav class="navbar navbar-default navbar-static-top b-t-black" style="z-index: 0;">
 		<div class="container">
 			<ul class="nav navbar-nav hidden-xs hidden-sm">
-				<li ui-sref-active="active"><a ui-sref="app.main_listing">Home</a></li>
-				<li ui-sref-active="active"><a ui-sref="home">Features</a></li>
+				<li ui-sref-active="active"><a ui-sref="app.main_listing({category : 'all'})">Home</a></li>
+				<li ng-repeat="category in nav.categories" ui-sref-active="active">
+					<a ui-sref="app.main_listing({category : category.name})">{{category.name}}</a>
+				</li>
+				<!-- <li ui-sref-active="active"><a ui-sref="home">Features</a></li>
 				<li ui-sref-active="active"><a ui-sref="home">Style</a></li>
 				<li ui-sref-active="active"><a ui-sref="home">Review</a></li>
 				<li ui-sref-active="active"><a ui-sref="home">Art</a></li>
 				<li ui-sref-active="active"><a ui-sref="home">Music</a></li>
 				<li ui-sref-active="active"><a ui-sref="home">Steals</a></li>
-				<li ui-sref-active="active"><a ui-sref="home">Video</a></li>
+				<li ui-sref-active="active"><a ui-sref="home">Video</a></li> -->
 			</ul>
 
 			<ul class="nav navbar-nav hidden-xs hidden-sm pull-right" ng-if="loggedIn">
 				<li ui-sref-active="active"><a ui-sref="app.main_dashboard">Post Article</a></li>
 				<li ui-sref-active="active"><a ui-sref="app.main_category">Category</a></li>
+				<li ui-sref-active="active"><a ui-sref="app.main_saved-articles">Saved Articles</a></li>
 			</ul>
 			<button ng-click="nav.openSidenav()" class="visible-sm visible-xs btn btn-sidenav">
 				<i class="glyphicon glyphicon-menu-hamburger"></i>

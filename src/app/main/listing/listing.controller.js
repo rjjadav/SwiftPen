@@ -5,9 +5,11 @@
 angular.module('app.main.listing')
 .controller('ListingController', ListingController);
 
-ListingController.$inject = [];
+ListingController.$inject = ['$stateParams'];
 
-function ListingController(){
+function ListingController($stateParams){
 	var listing = this;
+	listing.category = $stateParams.category || 'all';
+	console.log(listing.category);
 }
 })();
