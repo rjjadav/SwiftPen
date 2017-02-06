@@ -5,9 +5,9 @@
 angular.module('app.core')
 .controller('SignUpController',SignUpController);
 
-SignUpController.$inject = ['$cookies','$facebook','$timeout','GooglePlus','$uibModalInstance','toastr','api','data'];
+SignUpController.$inject = ['$cookies','$facebook','$timeout','GooglePlus','$uibModalInstance','toastr','api','data','constants'];
 
-function SignUpController($cookies, $facebook, $timeout, GooglePlus, $uibModalInstance, toastr, api, data){
+function SignUpController($cookies, $facebook, $timeout, GooglePlus, $uibModalInstance, toastr, api, data, constants){
 	var signup = this;
 	signup.facebookSignup = facebookSignup;
 	signup.gplusSignup = gplusSignup;
@@ -25,11 +25,11 @@ function SignUpController($cookies, $facebook, $timeout, GooglePlus, $uibModalIn
 			.then(function(data){
 				console.log(data);
 
-				data.accountType = 'facebook'
+				data.accountType = constants.SIGNUP_FACEBOOK;
 				var dataToSend ={
 					accountType : data.accountType,
 					emailId: data.email,
-					password: 'pass_facebook',
+					password: constants.SIGNUP_FACEBOOK_PASSWORD,
 					mobileNo: data.name,
 				}
 				signup.siteSignup(dataToSend);
@@ -42,11 +42,11 @@ function SignUpController($cookies, $facebook, $timeout, GooglePlus, $uibModalIn
 		GooglePlus.login().then(function (authResult) {
 			GooglePlus.getUser().then(function (user) {
 				console.log(user);
-				user.accountType = 'googleplus';
+				user.accountType = constants.SIGNUP_GOOGLE_PLUS;
 				var dataToSend ={
 					accountType : user.accountType,
 					emailId: user.email,
-					password: 'pass_gplus',
+					password: constants.SIGNUP_GOOGLE_PLUS_PASSWORD,
 					mobileNo: user.name,
 				}
 				signup.siteSignup(dataToSend);
@@ -58,7 +58,7 @@ function SignUpController($cookies, $facebook, $timeout, GooglePlus, $uibModalIn
 	}
 
 	function siteSignup(user){
-		user.accountType = user.accountType || 'site';
+		user.accountType = user.accountType || constants.SIGNUP_SITE;
 
 		data.post(api.saveAccount, user, false)
 		.then(function(response){

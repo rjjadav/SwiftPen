@@ -8,20 +8,21 @@ angular.module('app.core')
 ArticlesController.$inject = ['$scope','data','api'];
 
 function ArticlesController($scope, data, api){
-	
+
 	var articles = $scope.articles;
 	// console.log("category :: ",articles.category);
 	// articles.getArticles = getArticles;
 	articles.getAllArticles = getAllArticles;
 	articles.getSavedArticles = getSavedArticles;
 
-	articles.dataToDisplay = articles.display || 'all'; 
+	articles.dataToDisplay = articles.display || 'all';
 	articles.articlesList = undefined;
 	articles.savedArticles = undefined;
 	articles.selectedCategory = (articles.category == 'all' ? null : articles.category);
+	articles.searchedKeyword = undefined;
 
 	articles.getAllArticles();
-	
+
 
 	function getAllArticles(){
 		data.post(api.getArticles, {category: articles.selectedCategory}, false)
@@ -50,15 +51,20 @@ function ArticlesController($scope, data, api){
 					console.log("false");
 				}
 			})
-			
+
 			if(articles.dataToDisplay == 'saved'){
 				var allArticles = articles.articlesList
 				articles.articlesList = allArticles.filter(function(ele){
 					return ele.saved == true;
-				})	
+				})
 			}
 		})
 	}
+
+	$scope.$on('search_triggered', function (event,args) {
+    console.log('search_trigged ::: ', args.keyword);
+    articles.searchedKeyword = args.keyword;
+  })
 }
 
 })();

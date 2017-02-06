@@ -8,6 +8,7 @@ angular.module('app.main',[
 	'app.main.dashboard',
 	'app.main.category',
 	'app.main.saved_articles',
+	'app.main.article',
 ])
 .config(config);
 

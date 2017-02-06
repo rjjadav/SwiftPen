@@ -5,9 +5,9 @@
 angular.module('app.navigation')
 .controller('NavigationController', NavigationController);
 
-NavigationController.$inject = ['$rootScope','$cookies','$state','$uibModal','data','api'];
+NavigationController.$inject = ['$rootScope','$scope','$cookies','$state','$uibModal','data','api'];
 
-function NavigationController($rootScope, $cookies, $state, $uibModal, data, api){
+function NavigationController($rootScope, $scope, $cookies, $state, $uibModal, data, api){
 	console.log($state);
 	var nav = this;
 	nav.openSidenav = openSidenav;
@@ -15,6 +15,7 @@ function NavigationController($rootScope, $cookies, $state, $uibModal, data, api
 	nav.signIn = signIn;
 	nav.logout = logout;
 	nav.getCategories = getCategories;
+  nav.triggerSearch = triggerSearch;
 
 
 
@@ -94,8 +95,13 @@ function NavigationController($rootScope, $cookies, $state, $uibModal, data, api
 			$state.go('app.main_listing', {category: 'all'})
 		}
 		$state.reload();
-
 	}
+
+	function triggerSearch(searchKeyword) {
+    console.log(searchKeyword);
+    $rootScope.$broadcast('search_triggered',{keyword : searchKeyword});
+
+  }
 }
 
 })();

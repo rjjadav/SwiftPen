@@ -3,6 +3,33 @@
 </div>
 <div class="modal-body clearfix">
 	<div class="col-md-12">
+		<p>Sigin using Social media</p>
+
+		<button class="btn btn-block btn-social btn-facebook" ng-click="signin.facebookSignin()">
+			<span class="social-icon">
+				<i class="fa fa-facebook"></i>
+			</span>
+			Signin using Facebook
+		</button>
+
+		<button class="btn btn-block btn-social btn-gplus" ng-click="signin.googleSignin()">
+			<span class="social-icon">
+				<i class="fa fa-google-plus"></i>
+			</span>
+			Signin using Google
+		</button>
+	</div>
+	<div class="clearfix"></div>
+	<div class="col-md-12">
+		<span class="divider">
+			<span>
+			OR
+			</span>
+		</span>
+	</div>
+
+
+	<div class="col-md-12">
 		<div class="form-group">
 			<label>Email</label>
 			<input type="email" name="email" class="form-control" ng-model="signin.user.username"/>

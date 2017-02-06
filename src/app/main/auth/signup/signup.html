@@ -2,24 +2,35 @@
 	<h3 class="modal-title" id="modal-title">Signup</h3>
 </div>
 <div class="modal-body">
+	<div class="col-md-12">
+		<p>Signup using Social media</p>
 
-	<p>Signup using Social media</p>
+		<button class="btn btn-block btn-social btn-facebook" ng-click="signup.facebookSignup()">
+			<span class="social-icon">
+				<i class="fa fa-facebook"></i>
+			</span>
+			Signin using Facebook
+		</button>
 
-	<button class="btn btn-primary btn-block btn-facebook" ng-click="signup.facebookSignup()">
-		Signup using Facebook
-	</button>
-
-	<button class="btn btn-block btn-gplus" ng-click="signup.gplusSignup()">
-		Signup using Google
-	</button>
-
-	<!-- <button class="btn btn-primary btn-block btn-linkedIn">
-		Signup using LinkedIn
-	</button> -->
-
-	<h3>Register Now :</h3>
+		<button class="btn btn-block btn-social btn-gplus" ng-click="signup.gplusSignup()">
+			<span class="social-icon">
+				<i class="fa fa-google-plus"></i>
+			</span>
+			Signin using Google
+		</button>
+	</div>
+	<div class="clearfix"></div>
+	<div class="col-md-12">
+		<span class="divider">
+			<span>
+			OR
+			</span>
+		</span>
+	</div>
 
 	<div class="col-md-12">
+		<h3>Register Now :</h3>
+
 		<div class="form-group">
 			<label>Name</label>
 			<input class="form-control" type="text" name="mobile" ng-model="signup.user.mobileNo">
@@ -37,6 +48,5 @@
 			Signup
 		</button>
 	</div>
-
 	<div class="clearfix"></div>
 </div>

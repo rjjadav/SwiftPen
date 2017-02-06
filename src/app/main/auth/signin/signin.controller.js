@@ -5,12 +5,15 @@
 angular.module('app.core')
 .controller('SigninController', SigninController);
 
-SigninController.$inject = ['$cookies','toastr','$uibModalInstance','api','data'];
+SigninController.$inject = ['$cookies','toastr','$uibModalInstance','$facebook','GooglePlus','api','data','constants'];
 
-function SigninController($cookies, toastr, $uibModalInstance, api, data){
+function SigninController($cookies, toastr, $uibModalInstance, $facebook, GooglePlus, api, data, constants){
 	var signin = this;
 
 	signin.userLogin = userLogin;
+	signin.facebookSignin = facebookSignin;
+	signin.googleSignin = googleSignin;
+
 
 	function userLogin(user){
 		user.grant_type = 'password';
@@ -24,16 +27,50 @@ function SigninController($cookies, toastr, $uibModalInstance, api, data){
 				$cookies.put('accessToken',response.data.value);
 				$cookies.putObject('refreshToken',response.data.refreshToken);
 				$cookies.put('username', user.username);
-				$uibModalInstance.close(user);	
+				$uibModalInstance.close(user);
 			}else{
-				toastr.error('Invalid Email and Password', 'Error');	
+				toastr.error('Invalid Email and Password', 'Error');
 			}
-			
+
 		},function(error){
 			console.log(error);
 			toastr.error('Invalid Email and Password', 'Error');
 		})
 	}
+
+	function facebookSignin(){
+    $facebook.login()
+      .then(function (response) {
+        $facebook.api('/me',{
+          fields:'email'
+        }).then(function (data) {
+          console.log(data);
+          var loginData = {
+            username: data.email,
+            password: constants.SIGNUP_FACEBOOK_PASSWORD
+          }
+
+          signin.userLogin(loginData);
+        })
+      })
+      .catch();
+  }
+
+  function googleSignin(){
+	  GooglePlus.login()
+      .then(function (authResult) {
+        GooglePlus.getUser()
+          .then(function (user) {
+            console.log(user);
+            var loginData = {
+              username: user.email,
+              password: constants.SIGNUP_GOOGLE_PLUS_PASSWORD
+            };
+
+            signin.userLogin(loginData);
+          })
+      })
+  }
 }
 
 })();

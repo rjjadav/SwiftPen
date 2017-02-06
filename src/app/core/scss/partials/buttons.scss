@@ -1,3 +1,34 @@
+.btn-social{
+	font-weight: 500;
+	letter-spacing: 0;
+	text-transform: inherit;
+	border: 1px solid rgba(0,0,0,.2);
+	border-radius: 3px;
+	padding-top: 12px;
+	padding-bottom: 9px;
+	padding-left: 50px;
+	text-align: left;
+	position: relative;
+
+	.social-icon{
+		border-right: 1px solid rgba(0,0,0,.2);
+		display: block;
+		width: 40px;
+		height: 40px;
+		position: absolute;
+		left: 0;
+		top: 0;
+
+		i {
+			display: inline-block;
+			font-size: 20px;
+			position: relative;
+			top: 11px;
+			left: 14px;
+		}
+	}
+}
+
 .btn-facebook{
 	background: $facebook !important;
 	color: #fff !important;
@@ -11,4 +42,11 @@
 .btn-gplus{
 	background: $gplus !important;
 	color: #fff !important;
+	i {
+		display: inline-block;
+		font-size: 20px;
+		position: relative;
+		top: 11px;
+		left: 8px !important; 
+	}
 }

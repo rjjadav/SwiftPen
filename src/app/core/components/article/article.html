@@ -5,6 +5,10 @@
 		<button class="btn-save text-danger" ng-click="article.saveArticle(article.article)">
 			<i ng-class="article.article.saved ? 'fa fa-heart bounceIn' : 'fa fa-heart-o'"  class="animated" aria-hidden="true"></i>
 		</button>	
+
+		<button class="btn-share text-danger" ng-click="article.shareArticle(article.article)">
+			<i class="fa fa-share-alt" aria-hidden="true"></i>
+		</button>	
 	</div>
 
 	<div class="article-category mt-20">

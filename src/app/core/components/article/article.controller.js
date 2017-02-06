@@ -5,12 +5,13 @@
 angular.module('app.core')
 .controller('ArticleController',ArticleController);
 
-ArticleController.$inject = ['data', 'api'];
+ArticleController.$inject = ['$facebook','data', 'api'];
 
-function ArticleController(data, api){
+function ArticleController($facebook, data, api){
 	var article = this;
 	article.imagePath = api.imagePath;
 	article.saveArticle = saveArticle;
+	article.shareArticle = shareArticle;
 
 	function saveArticle(articleObj){
 		data.post(api.saveArticle,{articleId: articleObj.id}, false)
@@ -23,6 +24,22 @@ function ArticleController(data, api){
 		.catch(function(error){
 			console.log(error);
 		})
+	}
+
+	function shareArticle(articleObj){
+		console.log("articleObj ::: ",articleObj);
+		$facebook.ui({
+			// method: 'share',
+  	// 		href: 'https://developers.facebook.com/docs/',
+			method: 'feed',
+			picture: api.imagePath + articleObj.path,
+			name: articleObj.title,
+			link: 'https://developers.facebook.com/docs/',
+			caption: articleObj.content,
+		})
+		.then(function(response){
+			console.log(response);
+		});
 	}
 }
 
