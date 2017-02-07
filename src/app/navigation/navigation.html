@@ -1,22 +1,26 @@
 <div class="header">
 	<div class="col-md-12 header-section">
-		<h1 class="text-center col-md-6 col-sm-6 col-sm-offset-2 col-md-offset-3 mt-10">
+		<h1 class="text-center col-md-4 col-sm-6 col-sm-offset-2 col-md-offset-4 mt-10">
 			<span class="brand">SwiftPen</span><br/>
 			<span class="brand-tagline">From professional to personal</span>
 		</h1>
-		<div class="col-md-3 col-sm-4" >
-      <div class="col-md-6 form-group mt-35">
+		<div class="col-md-4 col-sm-4" >
+      <div class="col-md-4 form-group mt-35">
         <input placeholder="Search" type="text" ng-model="nav.search" ng-model-options="{debounce: 750}" ng-change="nav.triggerSearch(nav.search)" class="form-control"/>
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
       </div>
 
-			<button class="pull-right btn btn-sign-up" ng-click="nav.signUp()" ng-if="!loggedIn">
+      <button class="btn btn-sign-in" ng-if="!loggedIn" ng-click="nav.signIn()">
+        Sign In
+      </button>
+      <button class="btn btn-sign-up" ng-click="nav.signUp()" ng-if="!loggedIn">
 				Sign Up
 			</button>
-			<button class="pull-right btn btn-sign-in" ng-if="!loggedIn" ng-click="nav.signIn()">
-				Sign In
-			</button>
 
-			<div class="hidden-xs hidden-sm mt-25 dropdown"  uib-dropdown>
+
+			<div class="hidden-xs hidden-sm mt-25 dropdown col-md-8"  uib-dropdown>
 				<a class="dropdown-toggle" href uib-dropdown-toggle>
 					<img src="{{profilePic}}" class="brad-50-per img-thumbnail" ng-if="profilePic && loggedIn">
 					<span class="img-thumbnail brad-50-per profile-pic" ng-if="!profilePic && loggedIn">

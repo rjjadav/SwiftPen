@@ -1,8 +1,8 @@
 #navigation{
-	
+
 	.header-section{
 		height: 100px;
-	
+
 		.brand{
 			color: rgb(158,0,11);
 		}
@@ -17,7 +17,7 @@
 	}
 
 	.btn{
-		
+
 		&.btn-sign-in{
 			background: transparent;
 			margin-top:35px;
@@ -45,7 +45,7 @@
 	}
 	.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
 		color: #ccc;
-		 background-color: transparent; 
+		 background-color: transparent;
 	}
 
 	.profile-pic{
@@ -56,4 +56,12 @@
 		background: cadetblue;
 		color: white;
 	}
+
+  .search-icon{
+    position: absolute;
+    top: 6px;
+    right: 20px;
+    cursor: pointer;
+    color: #A9A9A9;
+  }
 }

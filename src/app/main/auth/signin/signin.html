@@ -29,19 +29,26 @@
 	</div>
 
 
-	<div class="col-md-12">
+	<form class="col-md-12" name="loginForm">
 		<div class="form-group">
 			<label>Email</label>
-			<input type="email" name="email" class="form-control" ng-model="signin.user.username"/>
+			<input type="email" name="email" class="form-control" ng-model="signin.user.username" ng-pattern="/^.+@.+\..+$/" required/>
+      <div ng-if='loginForm.email.$dirty || loginForm.email.$touched' ng-messages='loginForm.email.$error' class="text-danger">
+        <div ng-message='required'> Please fill out this field</div>
+        <div ng-message='pattern'> Please enter valid Email Address</div>
+      </div>
 		</div>
 
 		<div class="form-group">
 			<label>Password</label>
-			<input type="password" name="password" class="form-control" ng-model="signin.user.password"/>
+			<input type="password" name="password" class="form-control" ng-model="signin.user.password" required/>
+      <div ng-if='loginForm.password.$dirty || loginForm.password.$touched' ng-messages='loginForm.password.$error' class="text-danger">
+        <div ng-message='required'> Please fill out this field</div>
+      </div>
 		</div>
 
-		<button class="btn btn-success btn-block" ng-click="signin.userLogin(signin.user)">
+		<button class="btn btn-success btn-block" ng-click="signin.userLogin(signin.user)" ng-disabled="!loginForm.$valid || signin.loading">
 			Sign In
 		</button>
-	</div>
+	</form>
 </div>

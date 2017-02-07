@@ -13,8 +13,9 @@ $fa-font-path: "../../../../bower_components/font-awesome/fonts";
 /*@import "../../../../bower_components/animate.css/animate.css";*/
 
 
-@import 'partials/animate';
 @import 'partials/variables';
+@import "partials/override";
+@import 'partials/animate';
 @import 'partials/buttons';
 @import 'partials/helpers';
 @import 'partials/tags';

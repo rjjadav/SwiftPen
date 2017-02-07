@@ -1,20 +1,27 @@
 
 	<div class="article-img-wrap">
-		<img ng-src="{{article.imagePath + article.article.path}}"/>
-		<!-- {{article.article.path}} -->
-		<button class="btn-save text-danger" ng-click="article.saveArticle(article.article)">
-			<i ng-class="article.article.saved ? 'fa fa-heart bounceIn' : 'fa fa-heart-o'"  class="animated" aria-hidden="true"></i>
-		</button>	
+    <button class="btn-save text-danger" ng-click="article.saveArticle(article.article)">
+      <i ng-class="article.article.saved ? 'fa fa-heart bounceIn' : 'fa fa-heart-o'"  class="animated" aria-hidden="true"></i>
+    </button>
 
-		<button class="btn-share text-danger" ng-click="article.shareArticle(article.article)">
-			<i class="fa fa-share-alt" aria-hidden="true"></i>
-		</button>	
+    <button class="btn-share text-danger" ng-click="article.shareArticle(article.article)">
+      <i class="fa fa-share-alt" aria-hidden="true"></i>
+    </button>
+
+    <img ng-src="{{article.imagePath + article.article.path}}"/>
+
+		<table class="table table-striped">
+      <tr ng-repeat="data in article.tableData">
+        <td class="text-left">{{data.key}}</td>
+        <td class="text-left">{{data.value}}</td>
+      </tr>
+    </table>
 	</div>
 
 	<div class="article-category mt-20">
 		<span class="cat-{{article.article.category}} font-white inline-block ph-10 brad-2">
 			{{article.article.category}}
-		</span>	
+		</span>
 	</div>
 	<h3 class="article-title">{{article.article.title}}</h3>
 	<p class="article-content mv-20">

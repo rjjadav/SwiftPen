@@ -104,4 +104,8 @@
 		clear: both;
 		position: relative;
 	}
+
+  .table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #D6DCE4;
+  }
 }

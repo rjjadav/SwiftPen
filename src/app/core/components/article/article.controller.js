@@ -9,9 +9,18 @@ ArticleController.$inject = ['$facebook','data', 'api'];
 
 function ArticleController($facebook, data, api){
 	var article = this;
-	article.imagePath = api.imagePath;
+
 	article.saveArticle = saveArticle;
 	article.shareArticle = shareArticle;
+
+  article.imagePath = api.imagePath;
+	article.tableData = [
+    {key:'Company', value:'PVR'},
+    {key:'Sector', value:'Entertainment'},
+    {key:'Year Incorporated', value:'1995'},
+    {key:'Corporate Office', value: 'Gurgaon'},
+    {key:'Promoter(s)', value:'Ajay Bijli'}
+  ];
 
 	function saveArticle(articleObj){
 		data.post(api.saveArticle,{articleId: articleObj.id}, false)

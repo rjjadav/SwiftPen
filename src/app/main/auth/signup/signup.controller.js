@@ -14,6 +14,8 @@ function SignUpController($cookies, $facebook, $timeout, GooglePlus, $uibModalIn
 	signup.siteSignup = siteSignup;
 	signup.siteSignin = siteSignin;
 
+
+	signup.loading = false;
 	function facebookSignup(){
 		$facebook.login()
 		.then(function(response){
@@ -76,6 +78,7 @@ function SignUpController($cookies, $facebook, $timeout, GooglePlus, $uibModalIn
 	}
 
 	function siteSignin(user){
+	  signup.loading = true;
 		// console.log(user);
 		var dataToSend = {
 			username: user.emailId,
@@ -96,13 +99,14 @@ function SignUpController($cookies, $facebook, $timeout, GooglePlus, $uibModalIn
 			}else{
 				toastr.error('Invalid Email and Password', 'Error');
 			}
-				
+      signup.loading = false;
 		},function(error){
 			// console.log(error);
 			toastr.error('Invalid Email and Password', 'Error');
+      signup.loading = false;
 		});
-			
-			
+
+
 	}
 }
 

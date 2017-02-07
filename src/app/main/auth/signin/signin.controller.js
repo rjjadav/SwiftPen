@@ -13,10 +13,12 @@ function SigninController($cookies, toastr, $uibModalInstance, $facebook, Google
 	signin.userLogin = userLogin;
 	signin.facebookSignin = facebookSignin;
 	signin.googleSignin = googleSignin;
+	signin.loading = false;
 
 
 	function userLogin(user){
-		user.grant_type = 'password';
+    signin.loading = true;
+    user.grant_type = 'password';
 		user.client_id = 'restapp';
 		user.client_secret = "restapp";
 
@@ -31,10 +33,11 @@ function SigninController($cookies, toastr, $uibModalInstance, $facebook, Google
 			}else{
 				toastr.error('Invalid Email and Password', 'Error');
 			}
-
+      signin.loading = false;
 		},function(error){
 			console.log(error);
 			toastr.error('Invalid Email and Password', 'Error');
+      signin.loading = false;
 		})
 	}
 
