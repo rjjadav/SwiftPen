@@ -15,6 +15,7 @@ angular.module('app.core',[
 	'ngFileUpload',
 	'ngFacebook',
 	'googleplus',
+  'ngTagsInput',
 ]);
 
 })();

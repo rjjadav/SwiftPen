@@ -5,15 +5,21 @@
 angular.module('app.main.dashboard')
 .controller('DashboardController',DashboardController);
 
-DashboardController.$inject = ['toastr','$filter','data', 'api'];
+DashboardController.$inject = ['$scope','toastr','$filter','data', 'api'];
 
-function DashboardController(toastr, $filter, data, api){
+function DashboardController($scope,toastr, $filter, data, api){
 	var dashboard = this;
 
 	dashboard.getCategory = getCategory;
 	dashboard.selectedTags = selectedTags;
+	dashboard.addTag = addTag;
 	dashboard.addArticle = addArticle;
 
+
+	dashboard.article = {
+	  tags: [],
+  };
+	dashboard.tags = undefined;
 
 	dashboard.getCategory();
 	function getCategory(){
@@ -28,6 +34,12 @@ function DashboardController(toastr, $filter, data, api){
 		var tags = $filter('filter')(dashboard.tags, {checked: true});
 
 		console.log(tags);
+	}
+
+	function addTag(tag){
+
+	  dashboard.article.tags.push(tag.text);
+    console.log(dashboard.article.tags);
 	}
 
 	function addArticle(article){
@@ -46,6 +58,16 @@ function DashboardController(toastr, $filter, data, api){
 		});
 
 	}
+
+	// $scope.$watch('dashboard.tags.length',function (val) {
+  //   if(dashboard.tags){
+  //     dashboard.article.tags = dashboard.tags.map(function (tag) {
+  //       return tag.text;
+  //     });
+  //   }
+  //
+  //   console.log(dashboard.article.tags);
+  // })
 }
 
 })();

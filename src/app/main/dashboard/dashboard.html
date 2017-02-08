@@ -4,7 +4,14 @@
 		<div class="row">
 			<div class="col-md-6">
 				<h4>Article Picture</h4>
-				<input type="file" ngf-select="" ng-model="dashboard.article.image" name="file" ngf-accept="'image/*'" required>
+				<input
+          type="file"
+          ngf-select=""
+          ng-model="dashboard.article.image"
+          name="file"
+          ngf-accept="'image/*'"
+          required
+        />
         <div ng-if='postArticleForm.file.$dirty || postArticleForm.file.$touched' ng-messages='postArticleForm.file.$error' class="text-danger">
           <div ng-message='required'> Please fill out this field</div>
         </div>
@@ -14,6 +21,20 @@
 				<img ngf-thumbnail="dashboard.article.image" ng-if="dashboard.article.image" class="thumbnail">
 			</div>
 		</div>
+
+    <div class="row mt-40">
+      <div class="col-md-12">
+        <h4>Upload Table Data</h4>
+        <input
+          type="file"
+          ngf-select=""
+          ng-model="dashboard.article.tableFile"
+          name="tableFile"
+          ngf-accept="'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'"
+        />
+      </div>
+    </div>
+
 		<div class="row mt-40">
 			<div class="col-md-12">
 				<h4>Select Category</h4>
@@ -34,6 +55,17 @@
 				</div> -->
 			</div>
 		</div>
+
+    <div class="row mt-40">
+      <div class="col-md-12">
+        <h4>Add Tags</h4>
+        <tags-input
+          ng-model="dashboard.tags"
+          class="bootstrap"
+          on-tag-added="dashboard.addTag($tag)"
+        ></tags-input>
+      </div>
+    </div>
 
 		<div class="row mt-40">
 			<div class="col-md-12 form-group">

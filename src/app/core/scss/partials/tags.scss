@@ -1,23 +1,24 @@
 .cat-Art {
 background-color: #7d2a35 !important;
+  color: #ffffff !important;
 }
 .cat-Culture {
 background-color: #b4ba6c !important;
+  color: #ffffff !important;
 }
 .cat-Cycles {
 background-color: #c73226 !important;
+  color: #ffffff !important;
 }
 .cat-Galleries {
 background-color: #917a56 !important;
+
 }
 .cat-Health {
 background-color: #677e52 !important;
 }
 .cat-Inspirations {
 background-color: #083643 !important;
-}
-.tags{
-	color: #ffffff !important;
 }
 .cat-Lookbook {
 background-color: #703030 !important;
@@ -45,7 +46,7 @@ background-color: #413659 !important;
 }
 .cat-Uncategorized {
 background-color: #000 !important;
-} 
+}
 .cat-Video {
 background-color: #374140 !important;
 }
@@ -60,4 +61,53 @@ background-color: #374140 !important;
 .cat-General {
 	background-color: #413659 !important;
 	color: #fff !important;
+}
+
+
+.bootstrap {
+  .tags {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    &.focused {
+      border-color: #66afe9;
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+    }
+    .tag-item {
+      background: #428bca;
+      border: 1px solid #357ebd;
+      border-radius: 4px;
+      color: #fff;
+      &.selected {
+        background: #d9534f;
+        border: 1px solid #d43f3a;
+        border-radius: 4px;
+        color: #fff;
+      }
+      button {
+        background: transparent;
+        color: #000;
+        opacity: .4;
+      }
+    }
+  }
+  .autocomplete {
+    border-radius: 4px;
+    .suggestion-item {
+      &.selected {
+        color: #262626;
+        background-color: #e9e9e9;
+      }
+      em {
+        font-weight: normal;
+        background-color: #ffff00;
+      }
+      &.selected em {
+        color: #262626;
+        background-color: #ffff00;
+      }
+    }
+  }
 }
