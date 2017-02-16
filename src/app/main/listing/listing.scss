@@ -108,4 +108,10 @@
   .table-striped > tbody > tr:nth-of-type(odd) {
     background-color: #D6DCE4;
   }
+
+  .article-container{
+    &:nth-child(3n+1){
+      clear: both;
+    }
+  }
 }
