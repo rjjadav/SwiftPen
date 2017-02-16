@@ -8,7 +8,7 @@ angular.module('app.core')
 api.$inject = [];
 
 function api(){
-	var env = 'dev';
+	var env = 'uat';
 
 	var url = {
 		dev: {
