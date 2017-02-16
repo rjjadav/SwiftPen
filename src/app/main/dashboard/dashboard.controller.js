@@ -17,7 +17,7 @@ function DashboardController($scope,toastr, $filter, data, api){
 
 
 	dashboard.article = {
-	  tags: [],
+	  tags: "",
   };
 	dashboard.tags = undefined;
 
@@ -38,14 +38,17 @@ function DashboardController($scope,toastr, $filter, data, api){
 
 	function addTag(tag){
 
-	  dashboard.article.tags.push(tag.text);
+	  dashboard.article.tags+= tag.text+",";
     console.log(dashboard.article.tags);
 	}
 
 	function addArticle(article){
+	  console.log(article);
 		// article.category="Art";
 		article.link = article.link || null;
-
+    article.excel = article.excel || null;
+    article.secondImage = article.image || null;
+    // article.tags = ["qwe", "zczc"];
 		data.upload(api.addArticle, article)
 		.then(function(response){
 			console.log(response);

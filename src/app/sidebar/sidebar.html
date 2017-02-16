@@ -2,8 +2,51 @@
 	<i class="glyphicon glyphicon-remove"></i>
 </a>
 <div class="overlay-content">
-	<a href="#">About</a>
-	<a href="#">Services</a>
-	<a href="#">Clients</a>
-	<a href="#">Contact</a>
+	<!--<a href="#">About</a>-->
+	<!--<a href="#">Services</a>-->
+	<!--<a href="#">Clients</a>-->
+	<!--<a href="#">Contact</a>-->
+  <div class="col-md-4 form-group mt-35">
+    <input placeholder="Search" type="text" ng-model="sidebar.search" ng-model-options="{debounce: 750}" ng-change="sidebar.triggerSearch(sidebar.search)" class="form-control"/>
+    <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+  </div>
+
+
+  <ul>
+    <li ui-sref-active="active"><a ui-sref="app.main_listing({category : 'all'})">Home</a></li>
+    <li ng-repeat="category in sidebar.categories" ui-sref-active="active">
+      <a ui-sref="app.main_listing({category : category.name})">{{category.name}}</a>
+    </li>
+  </ul>
+
+  <hr/>
+
+  <ul ng-if="loggedIn && role == 'admin'">
+    <li ui-sref-active="active"><a ui-sref="app.main_dashboard">Post Article</a></li>
+    <li ui-sref-active="active"><a ui-sref="app.main_category">Category</a></li>
+    <li ui-sref-active="active"><a ui-sref="app.main_saved-articles">Saved Articles</a></li>
+  </ul>
+
+  <hr/>
+  <ul ng-if="!loggedIn">
+    <li>
+      <a href="javascript:void(0)" ng-click="sidebar.signIn()">Sign In</a>
+    </li>
+    <li>
+      <a href="javascript:void(0)" ng-click="sidebar.signUp()">Sign Up</a>
+    </li>
+  </ul>
+  <ul ng-if="loggedIn">
+    <li>
+      <a href="javascript:void(0)" ng-click="sidebar.logout()">Logout</a>
+    </li>
+  </ul>
+  <hr/>
+  <ul>
+    <li>
+      <a>About Us</a>
+    </li>
+  </ul>
 </div>

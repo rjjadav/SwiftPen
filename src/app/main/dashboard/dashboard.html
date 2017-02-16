@@ -28,7 +28,7 @@
         <input
           type="file"
           ngf-select=""
-          ng-model="dashboard.article.tableFile"
+          ng-model="dashboard.article.excel"
           name="tableFile"
           ngf-accept="'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'"
         />
@@ -80,7 +80,7 @@
 		<div class="row mt-40">
 			<div class="col-md-12 form-group">
 				<h4>Article Content</h4>
-				<textarea name="content" class="form-control" ng-model="dashboard.article.content" required> </textarea>
+				<textarea name="content" class="form-control" ng-model="dashboard.article.content"> </textarea>
         <div ng-if='postArticleForm.content.$dirty || postArticleForm.content.$touched' ng-messages='postArticleForm.content.$error' class="text-danger">
           <div ng-message='required'> Please fill out this field</div>
         </div>

@@ -14,13 +14,13 @@ function ArticleController($facebook, data, api){
 	article.shareArticle = shareArticle;
 
   article.imagePath = api.imagePath;
-	article.tableData = [
-    {key:'Company', value:'PVR'},
-    {key:'Sector', value:'Entertainment'},
-    {key:'Year Incorporated', value:'1995'},
-    {key:'Corporate Office', value: 'Gurgaon'},
-    {key:'Promoter(s)', value:'Ajay Bijli'}
-  ];
+	// article.tableData = [
+  //   {key:'Company', value:'PVR'},
+  //   {key:'Sector', value:'Entertainment'},
+  //   {key:'Year Incorporated', value:'1995'},
+  //   {key:'Corporate Office', value: 'Gurgaon'},
+  //   {key:'Promoter(s)', value:'Ajay Bijli'}
+  // ];
 
 	function saveArticle(articleObj){
 		data.post(api.saveArticle,{articleId: articleObj.id}, false)

@@ -5,9 +5,9 @@
 angular.module('app.navigation')
 .controller('NavigationController', NavigationController);
 
-NavigationController.$inject = ['$rootScope','$scope','$cookies','$state','$uibModal','data','api'];
+NavigationController.$inject = ['$rootScope','$scope','$cookies','$state','$uibModal','data','api','categories','auth'];
 
-function NavigationController($rootScope, $scope, $cookies, $state, $uibModal, data, api){
+function NavigationController($rootScope, $scope, $cookies, $state, $uibModal, data, api, categories, auth){
 	console.log($state);
 	var nav = this;
 	nav.openSidenav = openSidenav;
@@ -17,20 +17,30 @@ function NavigationController($rootScope, $scope, $cookies, $state, $uibModal, d
 	nav.getCategories = getCategories;
   nav.triggerSearch = triggerSearch;
 
-
-
 	nav.categories = undefined;
-
-
 	nav.getCategories();
+
+	$scope.$on('sign_up', function (event, args) {
+    nav.signUp();
+  });
+
+	$scope.$on('sign_in', function (event, args) {
+    nav.signIn();
+  });
+
+	$scope.$on('logout', function(event, args) {
+	  nav.logout();
+  });
+
 	function openSidenav(){
 		document.getElementById("sidebar").style.width = "250px";
-		document.getElementById("main").style.marginLeft = "250px";
+		// document.getElementById("main").style.marginLeft = "250px";
 	}
 
 	function getCategories(){
-		data.post(api.getCategory, null, true)
-		.then(function(response){
+		// data.post(api.getCategory, null, true)
+		categories.get()
+    .then(function(response){
 			console.log('getCategory ::: ',response);
 			nav.categories = response.data.categories;
 		})
@@ -48,14 +58,16 @@ function NavigationController($rootScope, $scope, $cookies, $state, $uibModal, d
 			console.log("Data After Closing ::: ", data);
 
 			if(data){
-				$rootScope.loggedIn = true;
-				$rootScope.name = data.name || data.username;
-				$rootScope.profilePic = undefined;
-				if(data.accountType == 'facebook'){
-					$rootScope.profilePic = data.picture.data.url;
-				}else if(data.accountType == 'googleplus'){
-					$rootScope.profilePic = data.picture;
-				}
+			  auth.getUserInfo();
+				// $rootScope.loggedIn = true;
+				// $rootScope.name = data.name || data.username;
+				// $rootScope.profilePic = undefined;
+
+				// if(data.accountType == 'facebook'){
+				// 	$rootScope.profilePic = data.picture.data.url;
+				// }else if(data.accountType == 'googleplus'){
+				// 	$rootScope.profilePic = data.picture;
+				// }
 				$state.reload();
 			}
 		})
@@ -72,8 +84,9 @@ function NavigationController($rootScope, $scope, $cookies, $state, $uibModal, d
 			console.log("Data After Closing ::: ", data);
 
 			if(data){
-				$rootScope.loggedIn = true;
-				$rootScope.name = data.username;
+        auth.getUserInfo();
+				// $rootScope.loggedIn = true;
+				// $rootScope.name = data.username;
 				$state.reload();
 				// $rootScope.profilePic = undefined;
 				// if(data.accountType == 'facebook'){
@@ -89,8 +102,11 @@ function NavigationController($rootScope, $scope, $cookies, $state, $uibModal, d
 		$cookies.remove('accessToken');
 		$cookies.remove('refreshToken');
 		$cookies.remove('username');
+
 		$rootScope.loggedIn = false;
 		$rootScope.name = undefined;
+		$rootScope.role = undefined;
+
 		if($state.current.name !== 'app.main_listing'){
 			$state.go('app.main_listing', {category: 'all'})
 		}
@@ -102,6 +118,9 @@ function NavigationController($rootScope, $scope, $cookies, $state, $uibModal, d
     $rootScope.$broadcast('search_triggered',{keyword : searchKeyword});
 
   }
+
+
+
 }
 
 })();

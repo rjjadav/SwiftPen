@@ -19,10 +19,9 @@ function CategoryController(toastr, data, api){
 	function getCategory(){
 		data.post(api.getCategory, null, true)
 		.then(function(response){
-			console.log('getCategory ::: ',response);
 			category.categoriesList = response.data.categories;
 		})
-		.catch()
+		.catch();
 	}
 
 	function addCategory(categoryObj){
@@ -33,7 +32,7 @@ function CategoryController(toastr, data, api){
 		.then(function(response){
 			toastr.success('Category Saved', 'success')
 			category.getCategory();
-		})
+		});
 	}
 }
 

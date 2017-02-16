@@ -4,7 +4,7 @@
 			<span class="brand">SwiftPen</span><br/>
 			<span class="brand-tagline">From professional to personal</span>
 		</h1>
-		<div class="col-md-4 col-sm-4" >
+		<div class="col-md-4 col-sm-4 hidden-xs hidden-sm " >
       <div class="col-md-4 form-group mt-35">
         <input placeholder="Search" type="text" ng-model="nav.search" ng-model-options="{debounce: 750}" ng-change="nav.triggerSearch(nav.search)" class="form-control"/>
         <span class="search-icon">
@@ -45,16 +45,9 @@
 				<li ng-repeat="category in nav.categories" ui-sref-active="active">
 					<a ui-sref="app.main_listing({category : category.name})">{{category.name}}</a>
 				</li>
-				<!-- <li ui-sref-active="active"><a ui-sref="home">Features</a></li>
-				<li ui-sref-active="active"><a ui-sref="home">Style</a></li>
-				<li ui-sref-active="active"><a ui-sref="home">Review</a></li>
-				<li ui-sref-active="active"><a ui-sref="home">Art</a></li>
-				<li ui-sref-active="active"><a ui-sref="home">Music</a></li>
-				<li ui-sref-active="active"><a ui-sref="home">Steals</a></li>
-				<li ui-sref-active="active"><a ui-sref="home">Video</a></li> -->
 			</ul>
 
-			<ul class="nav navbar-nav hidden-xs hidden-sm pull-right" ng-if="loggedIn">
+			<ul class="nav navbar-nav hidden-xs hidden-sm pull-right" ng-if="loggedIn && role == 'admin'">
 				<li ui-sref-active="active"><a ui-sref="app.main_dashboard">Post Article</a></li>
 				<li ui-sref-active="active"><a ui-sref="app.main_category">Category</a></li>
 				<li ui-sref-active="active"><a ui-sref="app.main_saved-articles">Saved Articles</a></li>
