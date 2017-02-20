@@ -9,6 +9,7 @@ angular.module('app.main',[
 	'app.main.category',
 	'app.main.saved_articles',
 	'app.main.article',
+  'app.main.manage-articles',
 ])
 .config(config);
 

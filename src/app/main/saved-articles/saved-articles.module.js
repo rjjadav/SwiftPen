@@ -13,8 +13,8 @@ function config($stateProvider){
 		views: {
 			'content@app': {
 				templateUrl: 'app/main/saved-articles/saved-articles.html',
-				controller: function(){},
-				controllerAs: 'savedArticles'
+				controller: 'SavedArticlesController',
+				controllerAs: 'sac'
 			}
 		}
 	})

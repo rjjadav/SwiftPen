@@ -118,9 +118,6 @@ function NavigationController($rootScope, $scope, $cookies, $state, $uibModal, d
     $rootScope.$broadcast('search_triggered',{keyword : searchKeyword});
 
   }
-
-
-
 }
 
 })();

@@ -35,6 +35,9 @@ function api(){
 		saveArticle 	  : url[env].backend + '/saveArticle',
 		getCategory		  : url[env].backend + '/getCategory',
 		getSavedArticle : url[env].backend + '/getSavedArticle',
+    getAllArticles  : url[env].backend + '/getAllArticles',
+    deleteArticle   : url[env].backend + '/deleteArticle',
+    makeArticleActive : url[env].backend + '/makeArticleActive',
 	}
 
 	return config;

@@ -5,15 +5,18 @@
 angular.module('app.main.dashboard')
 .controller('DashboardController',DashboardController);
 
-DashboardController.$inject = ['$scope','toastr','$filter','data', 'api'];
+DashboardController.$inject = ['$rootScope','$scope','toastr','$filter','data', 'api'];
 
-function DashboardController($scope,toastr, $filter, data, api){
+function DashboardController($rootScope,$scope,toastr, $filter, data, api){
+
 	var dashboard = this;
 
 	dashboard.getCategory = getCategory;
 	dashboard.selectedTags = selectedTags;
 	dashboard.addTag = addTag;
 	dashboard.addArticle = addArticle;
+	dashboard.activateArticle = activateArticle;
+
 
 
 	dashboard.article = {
@@ -48,12 +51,18 @@ function DashboardController($scope,toastr, $filter, data, api){
 		article.link = article.link || null;
     article.excel = article.excel || null;
     article.secondImage = article.image || null;
+    article.content = article.content || null;
     // article.tags = ["qwe", "zczc"];
 		data.upload(api.addArticle, article)
 		.then(function(response){
 			console.log(response);
 			if(response.data.added){
-				toastr.success('Article Posted', 'Success');
+        if($rootScope.role == 'admin'){
+          dashboard.activateArticle(response.data.articleId);
+        }else{
+          toastr.success('Article Sent for Verification', 'Success');
+        }
+
 			}
 		})
 		.catch(function(error){
@@ -61,6 +70,16 @@ function DashboardController($scope,toastr, $filter, data, api){
 		});
 
 	}
+
+  function activateArticle(id) {
+    data.post(api.makeArticleActive,{articleId:id},false)
+      .then(function (response) {
+        if(response.data.added == true){
+          toastr.success('Article Posted Successfully','Success')
+        }
+        console.log(response);
+      })
+  }
 
 	// $scope.$watch('dashboard.tags.length',function (val) {
   //   if(dashboard.tags){
@@ -71,6 +90,7 @@ function DashboardController($scope,toastr, $filter, data, api){
   //
   //   console.log(dashboard.article.tags);
   // })
+  console.log("Role ::: ",$rootScope.role);
 }
 
 })();

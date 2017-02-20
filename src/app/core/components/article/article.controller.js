@@ -1,17 +1,19 @@
 (function(){
 
-'use strict';
+// 'use strict';
 
 angular.module('app.core')
 .controller('ArticleController',ArticleController);
 
-ArticleController.$inject = ['$facebook','data', 'api'];
+ArticleController.$inject = ['$scope','$facebook','$state','data', 'api'];
 
-function ArticleController($facebook, data, api){
-	var article = this;
-
+function ArticleController($scope,$facebook, $state, data, api){
+	var article = $scope.article;
 	article.saveArticle = saveArticle;
 	article.shareArticle = shareArticle;
+	article.activateArticle = activateArticle;
+  article.deleteArticle = deleteArticle;
+
 
   article.imagePath = api.imagePath;
 
@@ -43,6 +45,28 @@ function ArticleController($facebook, data, api){
 			console.log(response);
 		});
 	}
+
+	function activateArticle(articleObj) {
+    data.post(api.makeArticleActive,{articleId: articleObj.id},false)
+      .then(function (response) {
+        if(response.data.added == true){
+          articleObj.status = true;
+        }
+        console.log(response);
+      })
+  }
+
+  function deleteArticle(articleObj) {
+    data.post(api.deleteArticle,{articleId: articleObj.id},false)
+      .then(function(response){
+        if(response.data.added){
+          articleObj = undefined;
+          $state.reload();
+
+        }
+      })
+      .catch()
+  }
 }
 
 })();

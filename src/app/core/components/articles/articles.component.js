@@ -8,7 +8,7 @@ angular.module('app.core')
 function articles(){
 	var options = {
 		bindings: {
-			"article" : '<',
+			"data" : '<',
 			"display": '<',
 			"category": '<'
 

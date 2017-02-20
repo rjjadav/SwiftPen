@@ -8,13 +8,14 @@ angular.module('app.core')
 function article(){
 	var options = {
 		bindings : {
-			article: '<'
+			article: '<',
+      display: '<',
 		},
 		templateUrl: 'app/core/components/article/article.html',
 		controller: 'ArticleController',
 		controllerAs: 'article'
 	}
-	
+
 	return options;
 }
 })();
