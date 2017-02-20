@@ -23,7 +23,7 @@
 			{{article.article.category}}
 		</span>
 	</div>
-	<h3 class="article-title">{{article.article.title}}</h3>
+	<h3 class="article-title"><a ng-href="{{article.article.actualPath ? article.article.actualPath : null}}" target="_blank">{{article.article.title}}</a></h3>
 	<p class="article-content mv-20">
 		{{article.article.content}}
 	</p>

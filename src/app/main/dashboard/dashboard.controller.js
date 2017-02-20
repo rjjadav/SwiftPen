@@ -16,6 +16,7 @@ function DashboardController($rootScope,$scope,toastr, $filter, data, api){
 	dashboard.addTag = addTag;
 	dashboard.addArticle = addArticle;
 	dashboard.activateArticle = activateArticle;
+	dashboard.loading = false;
 
 
 
@@ -46,8 +47,9 @@ function DashboardController($rootScope,$scope,toastr, $filter, data, api){
 	}
 
 	function addArticle(article){
-	  console.log(article);
+	  // console.log(article);
 		// article.category="Art";
+    dashboard.loading = true;
 		article.link = article.link || null;
     article.excel = article.excel || null;
     article.secondImage = article.image || null;
@@ -61,12 +63,14 @@ function DashboardController($rootScope,$scope,toastr, $filter, data, api){
           dashboard.activateArticle(response.data.articleId);
         }else{
           toastr.success('Article Sent for Verification', 'Success');
+          dashboard.loading = false;
         }
 
 			}
 		})
 		.catch(function(error){
-			console.log(error);
+			toastr.error('Error posting Article', 'Error');
+      dashboard.loading = false;
 		});
 
 	}
@@ -75,10 +79,19 @@ function DashboardController($rootScope,$scope,toastr, $filter, data, api){
     data.post(api.makeArticleActive,{articleId:id},false)
       .then(function (response) {
         if(response.data.added == true){
-          toastr.success('Article Posted Successfully','Success')
+          dashboard.article = {};
+          toastr.success('Article Posted Successfully','Success');
         }
-        console.log(response);
+        else{
+          toastr.error('Error Posting Article', 'Error');
+        }
+        // console.log(response);
+        dashboard.loading = false;
       })
+      .catch(function (error) {
+        toastr.error('Error Posting Article', 'Error');
+        dashboard.loading = false;
+      });
   }
 
 	// $scope.$watch('dashboard.tags.length',function (val) {

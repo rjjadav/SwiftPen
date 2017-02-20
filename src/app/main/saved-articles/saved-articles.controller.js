@@ -18,10 +18,12 @@
 
     sac.getAllArticles();
     function getAllArticles(){
-      data.post(api.getArticles, {category: null}, true)
+      // data.post(api.getArticles, {category: null}, true)
+      data.post(api.getSavedArticle, null, true)
         .then(function(response){
-          sac.articlesList = response.data.articles;
-          sac.getSavedArticles();
+          // sac.articlesList = response.data.articles;
+          sac.savedArticles = response.data.articles;
+          // sac.getSavedArticles();
         })
     }
 
