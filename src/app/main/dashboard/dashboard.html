@@ -80,11 +80,11 @@
 		<div class="row mt-40">
 			<div class="col-md-12 form-group">
 				<h4>Article Content</h4>
-				<textarea name="content" class="form-control" ng-model="dashboard.article.content" ng-maxlength="300"> </textarea>
-        <span class="char-count">{{300 - dashboard.article.content.length}} characters left.</span>
+				<textarea name="content" class="form-control" ng-model="dashboard.article.content" ng-maxlength="3000"> </textarea>
+        <span class="char-count">{{3000 - dashboard.article.content.length}} characters left.</span>
         <div ng-if='postArticleForm.content.$dirty || postArticleForm.content.$touched' ng-messages='postArticleForm.content.$error' class="text-danger">
           <div ng-message='required'> Please fill out this field</div>
-          <div ng-message='maxlength'>Content is allowed upto 300 characters</div>
+          <div ng-message='maxlength'>Content is allowed upto 3000 characters</div>
         </div>
       </div>
 		</div>
