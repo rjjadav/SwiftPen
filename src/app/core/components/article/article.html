@@ -10,7 +10,7 @@
 
     <img ng-src="{{article.imagePath + article.article.path}}"/>
 
-		<table class="table table-striped">
+		<table class="table table-striped article-table">
       <tr ng-repeat="data in article.article.tableData">
         <td class="text-left"><strong>{{data.name}}</strong></td>
         <td class="text-left">{{data.value}}</td>
@@ -23,7 +23,8 @@
 			{{article.article.category}}
 		</span>
 	</div>
-	<h3 class="article-title"><a ng-href="{{article.article.actualPath ? article.article.actualPath : null}}" target="_blank">{{article.article.title}}</a></h3>
+	<h3 class="article-title" ng-if="article.article.actualPath != 'null'"><a ng-href="{{article.article.actualPath}}" target="_blank">{{article.article.title}}</a></h3>
+  <h3 class="article-title" ng-if="article.article.actualPath == 'null'">{{article.article.title}}</h3>
 	<p class="article-content mv-20">
 		{{article.article.content}}
 	</p>
