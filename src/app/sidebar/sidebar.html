@@ -2,16 +2,13 @@
 	<i class="glyphicon glyphicon-remove"></i>
 </a>
 <div class="overlay-content">
-	<!--<a href="#">About</a>-->
-	<!--<a href="#">Services</a>-->
-	<!--<a href="#">Clients</a>-->
-	<!--<a href="#">Contact</a>-->
-  <div class="col-md-4 form-group mt-35">
-    <input placeholder="Search" type="text" ng-model="sidebar.search" ng-model-options="{debounce: 750}" ng-change="sidebar.triggerSearch(sidebar.search)" class="form-control"/>
-    <span class="search-icon">
-          <i class="fa fa-search"></i>
-        </span>
-  </div>
+
+  <!--<div class="col-md-4 form-group mt-35">-->
+    <!--<input placeholder="Search" type="text" ng-model="sidebar.search" ng-model-options="{debounce: 750}" ng-change="sidebar.triggerSearch(sidebar.search)" class="form-control"/>-->
+    <!--<span class="search-icon">-->
+      <!--<i class="fa fa-search"></i>-->
+    <!--</span>-->
+  <!--</div>-->
 
 
   <ul>
@@ -26,6 +23,7 @@
   <ul ng-if="loggedIn && role == 'admin'">
     <li ui-sref-active="active"><a ui-sref="app.main_dashboard">Post Article</a></li>
     <li ui-sref-active="active"><a ui-sref="app.main_category">Category</a></li>
+    <li ui-sref-active="active"><a ui-sref="app.main_manage-articles">Manage Articles</a></li>
     <li ui-sref-active="active"><a ui-sref="app.main_saved-articles">Saved Articles</a></li>
   </ul>
 

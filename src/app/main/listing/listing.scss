@@ -5,7 +5,7 @@
 	.article-img-wrap {
 		position: relative;
 		img{
-			max-height: 200px;
+			max-height: 250px;
 			width: 100% !important;
 		}
 
@@ -61,10 +61,17 @@
 			padding: 0;
 		}
 	}
+
+  .article-title{
+    font-size: 21px;
+    text-align: left;
+  }
+
 	.article-content{
 		color: #666;
 		font-weight: 600;
 		font-size: 12px;
+    text-align: left;
 	}
 	.post-meta-desc{
 		a{

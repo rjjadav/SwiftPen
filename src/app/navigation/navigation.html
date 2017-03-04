@@ -53,9 +53,24 @@
         <li ui-sref-active="active"><a ui-sref="app.main_manage-articles" ng-if="loggedIn && role == 'admin'">Manage Articles</a></li>
 				<li ui-sref-active="active"><a ui-sref="app.main_saved-articles" ng-if="loggedIn">Saved Articles</a></li>
 			</ul>
-			<button ng-click="nav.openSidenav()" class="visible-sm visible-xs btn btn-sidenav">
-				<i class="glyphicon glyphicon-menu-hamburger"></i>
-			</button>
+
+      <div class="col-sm-12 col-xs-12">
+        <div class="col-sm-4 col-xs-4 ">
+          <button ng-click="nav.openSidenav()" class="visible-sm visible-xs btn btn-default display-inline mt-15">
+            <i class="glyphicon glyphicon-menu-hamburger"></i>
+          </button>
+        </div>
+
+        <div class="col-sm-6 col-xs-8 form-group visible-sm visible-xs pull-right display-inline mt-15">
+          <input placeholder="Search" type="text" ng-model="sidebar.search" ng-model-options="{debounce: 750}" ng-change="sidebar.triggerSearch(sidebar.search)" class="form-control "/>
+          <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        </div>
+      </div>
+
+
+
 		</div>
 	</nav>
 </div>
