@@ -1,4 +1,5 @@
-
+<h3 class="article-title" ng-if="article.article.actualPath != 'null'"><a ng-href="{{article.article.actualPath}}" target="_blank">{{article.article.title}}</a></h3>
+<h3 class="article-title" ng-if="article.article.actualPath == 'null'">{{article.article.title}}</h3>
 	<div class="article-img-wrap">
     <!--<button class="btn-save text-danger" ng-click="article.saveArticle(article.article)" ng-hide="article.display == 'manage'">-->
       <!--<i ng-class="article.article.saved ? 'fa fa-heart bounceIn' : 'fa fa-heart-o'"  class="animated" aria-hidden="true"></i>-->
@@ -23,8 +24,7 @@
 			{{article.article.category}}
 		</span>
 	</div>
-	<h3 class="article-title" ng-if="article.article.actualPath != 'null'"><a ng-href="{{article.article.actualPath}}" target="_blank">{{article.article.title}}</a></h3>
-  <h3 class="article-title" ng-if="article.article.actualPath == 'null'">{{article.article.title}}</h3>
+
 	<p class="article-content mv-20">
 		{{article.article.content}}
 	</p>
