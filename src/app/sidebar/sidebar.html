@@ -12,25 +12,25 @@
 
 
   <ul>
-    <li ui-sref-active="active"><a ui-sref="app.main_listing({category : 'all'})">Home</a></li>
+    <li ui-sref-active="active"><a ui-sref="app.main_listing({category : 'all'})" ng-click="sidebar.closeNav()">Home</a></li>
     <li ng-repeat="category in sidebar.categories" ui-sref-active="active">
-      <a ui-sref="app.main_listing({category : category.name})">{{category.name}}</a>
+      <a ui-sref="app.main_listing({category : category.name})" ng-click="sidebar.closeNav()">{{category.name}}</a>
     </li>
   </ul>
 
   <hr/>
 
   <ul ng-if="loggedIn && role == 'admin'">
-    <li ui-sref-active="active"><a ui-sref="app.main_dashboard">Post Article</a></li>
-    <li ui-sref-active="active"><a ui-sref="app.main_category">Category</a></li>
-    <li ui-sref-active="active"><a ui-sref="app.main_manage-articles">Manage Articles</a></li>
-    <li ui-sref-active="active"><a ui-sref="app.main_saved-articles">Saved Articles</a></li>
+    <li ui-sref-active="active"><a ui-sref="app.main_dashboard" ng-click="sidebar.closeNav()">Post Article</a></li>
+    <li ui-sref-active="active"><a ui-sref="app.main_category" ng-click="sidebar.closeNav()">Category</a></li>
+    <li ui-sref-active="active"><a ui-sref="app.main_manage-articles" ng-click="sidebar.closeNav()">Manage Articles</a></li>
+    <li ui-sref-active="active"><a ui-sref="app.main_saved-articles" ng-click="sidebar.closeNav()">Saved Articles</a></li>
   </ul>
 
   <hr/>
   <ul ng-if="!loggedIn">
     <li>
-      <a href="javascript:void(0)" ng-click="sidebar.signIn()">Sign In</a>
+      <a href="javascript:void(0)" ng-click="sidebar.signIn()" ng-click="sidebar.closeNav()">Sign In</a>
     </li>
     <li>
       <a href="javascript:void(0)" ng-click="sidebar.signUp()">Sign Up</a>

@@ -5,10 +5,12 @@
 
 		.brand{
 			color: rgb(158,0,11);
+      cursor: pointer;
 		}
 		.brand-tagline{
 			font-weight: 700;
 			font-size: 14px;
+      display: block;
 		}
 	}
 

@@ -5,9 +5,9 @@
 angular.module('app.core')
 .controller('ArticleController',ArticleController);
 
-ArticleController.$inject = ['$scope','$facebook','$state','data', 'api'];
+ArticleController.$inject = ['$rootScope','$scope','$facebook','$state','data', 'api'];
 
-function ArticleController($scope,$facebook, $state, data, api){
+function ArticleController($rootScope, $scope, $facebook, $state, data, api){
 	var article = $scope.article;
 	article.saveArticle = saveArticle;
 	article.shareArticle = shareArticle;
@@ -18,16 +18,22 @@ function ArticleController($scope,$facebook, $state, data, api){
   article.imagePath = api.imagePath;
 
 	function saveArticle(articleObj){
-		data.post(api.saveArticle,{articleId: articleObj.id}, false)
-		.then(function(response){
-			console.log(response);
-			if(response.data.added){
-				articleObj.saved = true;
-			}
-		})
-		.catch(function(error){
-			console.log(error);
-		})
+
+	  if($rootScope.loggedIn){
+      data.post(api.saveArticle,{articleId: articleObj.id}, false)
+        .then(function(response){
+          console.log(response);
+          if(response.data.added){
+            articleObj.saved = true;
+          }
+        })
+        .catch(function(error){
+          console.log(error);
+        })
+    }else{
+      $rootScope.$broadcast('sign_in',{action: 'save',data: articleObj});
+    }
+
 	}
 
 	function shareArticle(articleObj){

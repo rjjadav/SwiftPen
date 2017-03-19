@@ -25,6 +25,7 @@ function NavigationController($rootScope, $scope, $cookies, $state, $uibModal, d
   });
 
 	$scope.$on('sign_in', function (event, args) {
+    console.log(args);
     nav.signIn();
   });
 

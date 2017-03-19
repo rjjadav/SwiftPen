@@ -47,6 +47,16 @@
 		font-size: 20px;
 		position: relative;
 		top: 11px;
-		left: 8px !important; 
+		left: 8px !important;
 	}
+}
+
+.btn-inverse{
+  background: #333333;
+  color: #fff;
+
+  &:hover{
+    background: #030303;
+    color: #fff;
+  }
 }

@@ -5,9 +5,9 @@
 angular.module('app.sidebar')
 .controller('SidebarController',SidebarController);
 
-SidebarController.$inject = ['$rootScope', 'categories'];
+SidebarController.$inject = ['$rootScope', '$state','categories'];
 
-function SidebarController($rootScope, categories){
+function SidebarController($rootScope, $state, categories){
 	var sidebar = this;
 	sidebar.closeNav = closeNav;
   sidebar.getCategories = getCategories;
@@ -15,6 +15,7 @@ function SidebarController($rootScope, categories){
   sidebar.signUp = signUp;
   sidebar.signIn = signIn;
   sidebar.logout = logout;
+  sidebar.goto = goto;
 
   sidebar.getCategories();
 	function closeNav(){
@@ -49,6 +50,12 @@ function SidebarController($rootScope, categories){
   function logout(){
     $rootScope.$broadcast('logout');
     sidebar.closeNav();
+  }
+
+  function goto(){
+    sidebar.closeNav();
+    $state.go();
+
   }
 }
 
