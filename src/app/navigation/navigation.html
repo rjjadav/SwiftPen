@@ -42,9 +42,24 @@
 		<div class="container">
 			<ul class="nav navbar-nav hidden-xs hidden-sm">
 				<li ui-sref-active="active"><a ui-sref="app.main_listing({category : 'all'})">Home</a></li>
-				<li ng-repeat="category in nav.categories" ui-sref-active="active">
+				<li ng-repeat="category in nav.categories | limitTo:3" ui-sref-active="active">
 					<a ui-sref="app.main_listing({category : category.name})">{{category.name}}</a>
 				</li>
+        <li class="btn-group" uib-dropdown  dropdown-append-to-body>
+          <a id="btn-append-to-single-button" uib-dropdown-toggle>
+            More  <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button">
+            <!--<li role="menuitem"><a href="#">Action</a></li>-->
+            <!--<li role="menuitem"><a href="#">Another action</a></li>-->
+            <!--<li role="menuitem"><a href="#">Something else here</a></li>-->
+            <!--<li class="divider"></li>-->
+            <!--<li role="menuitem"><a href="#">Separated link</a></li>-->
+            <li role="menuitem" ng-repeat="category in nav.categories | limitTo:nav.categories.length:3" ui-sref-active="active">
+              <a ui-sref="app.main_listing({category : category.name})">{{category.name}}</a>
+            </li>
+          </ul>
+        </li>
 			</ul>
 
 			<ul class="nav navbar-nav hidden-xs hidden-sm pull-right">

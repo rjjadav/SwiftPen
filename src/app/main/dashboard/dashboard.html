@@ -40,9 +40,12 @@
 				<h4>Select Category</h4>
 				<select class="form-control" name="category" ng-model="dashboard.article.category" required>
 					<option value="">Select Category</option>
-					<option value="General">General</option>
-					<option value="Exit">Exit</option>
-					<option value="Investment">Investment</option>
+					<!--<option value="General">General</option>-->
+					<!--<option value="Exit">Exit</option>-->
+					<!--<option value="Investment">Investment</option>-->
+          <option ng-repeat="category in dashboard.categories" value="{{category.name}}">
+            {{category.name}}
+          </option>
 				</select>
         <div ng-if='postArticleForm.category.$dirty || postArticleForm.category.$touched' ng-messages='postArticleForm.category.$error' class="text-danger">
           <div ng-message='required'> Please fill out this field</div>

@@ -24,12 +24,14 @@ function DashboardController($rootScope,$scope,toastr, $filter, data, api){
 	  tags: "",
   };
 	dashboard.tags = undefined;
+	dashboard.categories = undefined;
 
 	dashboard.getCategory();
 	function getCategory(){
 		data.post(api.getCategory, null, true)
 		.then(function(response){
 			console.log('getCategory ::: ',response);
+			dashboard.categories = response.data.categories;
 		})
 		.catch()
 	}
