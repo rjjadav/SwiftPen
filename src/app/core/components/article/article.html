@@ -11,14 +11,19 @@
 
     <img ng-src="{{article.imagePath + article.article.path}}"/>
 
-		<table class="table table-striped article-table">
+		<table class="table table-striped article-table" ng-if="article.article.tableData">
       <tr ng-repeat="data in article.article.tableData">
         <td class="text-left"><strong>{{data.name}}</strong></td>
         <td class="text-left">{{data.value}}</td>
       </tr>
     </table>
+    <div layout="row" class="no-margin no-padding content-source" layout-align="start start" flex>
+      <span>
+        {{article.article.dateOfCreation | date: 'dd/MMM/yy'}}-
+        <a ng-href="{{article.article.actualPath}}" target="_blank">{{article.article.actualPath | domain}}</a>
+      </span>
+    </div>
 	</div>
-
 	<div class="article-category mt-20">
 		<span class="cat-{{article.article.category}} font-white inline-block ph-10 brad-2 cursor-pointer" ui-sref="app.main_listing({category : article.article.category})">
 			{{article.article.category}}
@@ -30,9 +35,9 @@
 	</p>
 	<!--<div class="separator"></div>-->
 	<div class="post-meta-desc mt-20">
-		<a href="#">
-			{{article.article.dateOfCreation | date: 'MMMM dd, yyyy'}}
-		</a>
+		<!--<a href="#">-->
+			<!--{{article.article.dateOfCreation | date: 'MMMM dd, yyyy'}}-->
+		<!--</a>-->
     <div ng-if="article.display == 'manage'">
       <button class="btn btn-success" ng-if="!article.article.status" ng-click="article.activateArticle(article.article)">Activate</button>
       <button class="btn btn-danger" ng-if="article.article.status" ng-click="article.deleteArticle(article.article)">Delete</button>
