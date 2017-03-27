@@ -13,8 +13,14 @@
 
   <ul>
     <li ui-sref-active="active"><a ui-sref="app.main_listing({category : 'all'})" ng-click="sidebar.closeNav()">Home</a></li>
-    <li ng-repeat="category in sidebar.categories" ui-sref-active="active">
-      <a ui-sref="app.main_listing({category : category.name})" ng-click="sidebar.closeNav()">{{category.name}}</a>
+    <!--<li ng-repeat="category in sidebar.categories" ui-sref-active="active">-->
+      <!--<a ui-sref="app.main_listing({category : category.name})" ng-click="sidebar.closeNav()">{{category.name}}</a>-->
+    <!--</li>-->
+  </ul>
+  <ul ng-repeat="(key,value) in sidebar.categories">
+    <li class="pl-30"><h5>{{key}}</h5></li>
+    <li ng-repeat="category in value" ui-sref-active="active">
+      <a ui-sref="app.main_listing({category : category})" ng-click="sidebar.closeNav()">{{category}}</a>
     </li>
   </ul>
 

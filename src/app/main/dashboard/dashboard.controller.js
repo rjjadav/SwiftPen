@@ -5,9 +5,9 @@
 angular.module('app.main.dashboard')
 .controller('DashboardController',DashboardController);
 
-DashboardController.$inject = ['$rootScope','$scope','toastr','$filter','data', 'api'];
+DashboardController.$inject = ['$rootScope','$scope','toastr','$filter','data', 'api','constants'];
 
-function DashboardController($rootScope,$scope,toastr, $filter, data, api){
+function DashboardController($rootScope,$scope,toastr, $filter, data, api, constants){
 
 	var dashboard = this;
 
@@ -24,9 +24,9 @@ function DashboardController($rootScope,$scope,toastr, $filter, data, api){
 	  tags: "",
   };
 	dashboard.tags = undefined;
-	dashboard.categories = undefined;
+	dashboard.categories = constants.CATEGORIES_OBJECT;
 
-	dashboard.getCategory();
+	// dashboard.getCategory();
 	function getCategory(){
 		data.post(api.getCategory, null, true)
 		.then(function(response){
@@ -56,6 +56,13 @@ function DashboardController($rootScope,$scope,toastr, $filter, data, api){
     article.excel = article.excel || null;
     article.secondImage = article.image || null;
     article.content = article.content || null;
+
+
+
+    article.category = article.category.filter(function(elem, index, self) {
+      return index == self.indexOf(elem);
+    })
+    article.category = article.category.join();
     // article.tags = ["qwe", "zczc"];
 		data.upload(api.addArticle, article)
 		.then(function(response){

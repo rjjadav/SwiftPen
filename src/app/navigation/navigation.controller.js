@@ -5,9 +5,9 @@
 angular.module('app.navigation')
 .controller('NavigationController', NavigationController);
 
-NavigationController.$inject = ['$rootScope','$scope','$cookies','$state','$uibModal','data','api','categories','auth'];
+NavigationController.$inject = ['$rootScope','$scope','$cookies','$state','$uibModal','data','api','categories','auth','constants'];
 
-function NavigationController($rootScope, $scope, $cookies, $state, $uibModal, data, api, categories, auth){
+function NavigationController($rootScope, $scope, $cookies, $state, $uibModal, data, api, categories, auth,constants){
 	console.log($state);
 	var nav = this;
 	nav.openSidenav = openSidenav;
@@ -17,8 +17,8 @@ function NavigationController($rootScope, $scope, $cookies, $state, $uibModal, d
 	nav.getCategories = getCategories;
   nav.triggerSearch = triggerSearch;
 
-	nav.categories = undefined;
-	nav.getCategories();
+	nav.categories = constants.CATEGORIES_OBJECT;
+	// nav.getCategories();
 
 	$scope.$on('sign_up', function (event, args) {
     nav.signUp();

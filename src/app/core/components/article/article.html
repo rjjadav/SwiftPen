@@ -17,16 +17,16 @@
         <td class="text-left">{{data.value}}</td>
       </tr>
     </table>
-    <div layout="row" class="no-margin no-padding content-source" layout-align="start start" flex>
+    <div layout="row" class="mt-5 no-padding content-source" layout-align="start start" flex>
       <span>
-        {{article.article.dateOfCreation | date: 'dd/MMM/yy'}}-
-        <a ng-href="{{article.article.actualPath}}" target="_blank">{{article.article.actualPath | domain}}</a>
+        {{article.article.dateOfCreation | date: 'dd/MM/yy'}} &nbsp;
+        <a ng-href="{{article.article.actualPath}}" target="_blank"><i>{{article.article.actualPath | domain}}</i></a>
       </span>
     </div>
 	</div>
 	<div class="article-category mt-20">
-		<span class="cat-{{article.article.category}} font-white inline-block ph-10 brad-2 cursor-pointer" ui-sref="app.main_listing({category : article.article.category})">
-			{{article.article.category}}
+		<span ng-repeat="category in article.article.category.split(',') track by $index"  class="cat-{{category}} font-white inline-block ph-10 brad-2 cursor-pointer" ui-sref="app.main_listing({category : category})">
+			{{category}}
 		</span>
 	</div>
 

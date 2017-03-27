@@ -1,0 +1,34 @@
+<div class="col-md-12 full-height" style="min-height: 500px;">
+  <div class="form-group col-md-6">
+    <input type="test" class="form-control" ng-model="planProductAssociation" id="planProduct" ng-blur="removeDuplicate()"/>
+    <span style="color: red">{{error}}</span>
+  </div>
+  <button class="btn btn-default" ng-click="selectPlanProduct(planProductAssociation)">Select Plan/Product</button>
+
+  <div class="col-md-12">
+    <div class="col-md-4">
+      <h5>Available Plans/Products</h5>
+      <div ng-repeat="productPlan in availablePlans">
+        {{productPlan}}
+      </div>
+    </div>
+    <div class="col-md-4" ng-if="showPlans">
+      <h5>Non Selected Plans</h5>
+      <div ng-repeat="nonSelectedPlan in nonSelectedPlans" ng-click="moveToSelected(nonSelectedPlan,$index)">
+        {{nonSelectedPlan}}
+      </div>
+    </div>
+    <div class="col-md-4" ng-if="showPlans">
+      <h5>Selected Plans</h5>
+      <div ng-repeat="selectedPlan in selectedPlans" ng-click="moveToNonSelected(selectedPlan,$index)">
+        {{selectedPlan}}
+      </div>
+
+    </div>
+    <div class="col-md-12" ng-if="showPlans">
+      <button class="btn btn-success pull-right" ng-click="hidePlans()">Done selection</button>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+
+</div>

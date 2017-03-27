@@ -14,6 +14,47 @@ function constants(){
 
 		SHOW_ARTICLES_ALL           : 'all',
 		SHOW_ARTICLES_SAVED         : 'saved',
+
+    CATEGORIES_OBJECT           : {
+		  'Transactions': [
+        'Private Equity',
+        'Venture Capital',
+        'M&A',
+        'PIPEs',
+        'Structured Credit',
+        'Public Equity',
+      ],
+      'Types':[
+        'Investments',
+        'Divestments'
+      ],
+      'Themes':[
+        'Consumers',
+        'Financials',
+        'Healthcare',
+        'Infrastructure',
+        'TMT',
+        'Industrials'
+      ],
+      'Offerings':[
+        'IPOs',
+        'Rights Issue',
+        'QIPs',
+      ],
+      'Funds':[
+        'Private Equity',
+        'Venture Capital',
+        'PIPEs',
+        'Structured Credit',
+      ],
+      'General':[
+		    'General'
+      ]
+
+
+
+
+    }
 	}
 
 	return constantsData;

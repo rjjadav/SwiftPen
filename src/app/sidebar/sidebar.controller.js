@@ -5,9 +5,9 @@
 angular.module('app.sidebar')
 .controller('SidebarController',SidebarController);
 
-SidebarController.$inject = ['$rootScope', '$state','categories'];
+SidebarController.$inject = ['$rootScope', '$state','categories','constants'];
 
-function SidebarController($rootScope, $state, categories){
+function SidebarController($rootScope, $state, categories, constants){
 	var sidebar = this;
 	sidebar.closeNav = closeNav;
   sidebar.getCategories = getCategories;
@@ -17,7 +17,9 @@ function SidebarController($rootScope, $state, categories){
   sidebar.logout = logout;
   sidebar.goto = goto;
 
-  sidebar.getCategories();
+  sidebar.categories = constants.CATEGORIES_OBJECT;
+
+  // sidebar.getCategories();
 	function closeNav(){
 		document.getElementById("sidebar").style.width = "0";
 		document.getElementById("main").style.marginLeft = "0";
