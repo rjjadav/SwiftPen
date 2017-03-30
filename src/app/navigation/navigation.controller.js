@@ -34,8 +34,9 @@ function NavigationController($rootScope, $scope, $cookies, $state, $uibModal, d
   });
 
 	function openSidenav(){
-		document.getElementById("sidebar").style.width = "250px";
-		// document.getElementById("main").style.marginLeft = "250px";
+		// document.getElementById("sidebar").style.width = "250px";
+		// // document.getElementById("main").style.marginLeft = "250px";
+    $rootScope.$broadcast('open_sidebar');
 	}
 
 	function getCategories(){

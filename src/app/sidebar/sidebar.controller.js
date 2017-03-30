@@ -9,6 +9,7 @@ SidebarController.$inject = ['$rootScope', '$state','categories','constants'];
 
 function SidebarController($rootScope, $state, categories, constants){
 	var sidebar = this;
+	sidebar.openNav = openNav;
 	sidebar.closeNav = closeNav;
   sidebar.getCategories = getCategories;
   sidebar.triggerSearch = triggerSearch;
@@ -16,13 +17,31 @@ function SidebarController($rootScope, $state, categories, constants){
   sidebar.signIn = signIn;
   sidebar.logout = logout;
   sidebar.goto = goto;
+  sidebar.isOpen = false;
 
   sidebar.categories = constants.CATEGORIES_OBJECT;
 
   // sidebar.getCategories();
+  function openNav(){
+    if(!sidebar.isOpen){
+      console.log("in if");
+      document.getElementById("sidebar").style.width = "250px";
+      document.getElementById("overlay").style.width = "100%";
+      document.getElementById("overlay").style.opacity = "0.8";
+      // document.getElementById("main").style.marginLeft = "250px";
+      sidebar.isOpen = true;
+    }
+  }
+
 	function closeNav(){
-		document.getElementById("sidebar").style.width = "0";
-		document.getElementById("main").style.marginLeft = "0";
+    console.log("in close");
+    if(sidebar.isOpen) {
+      document.getElementById("sidebar").style.width = "0";
+      document.getElementById("main").style.marginLeft = "0";
+      document.getElementById("overlay").style.width = "0";
+      document.getElementById("overlay").style.opacity = "0";
+      sidebar.isOpen = false;
+    }
 	}
 
 	function getCategories(){
@@ -60,9 +79,15 @@ function SidebarController($rootScope, $state, categories, constants){
   }
 
   $rootScope.$on('close_sidebar',function(){
-    console.log("sidebar closed");
     sidebar.closeNav();
+  });
+
+  $rootScope.$on('open_sidebar',function(){
+    console.log("open sidebar");
+    sidebar.openNav();
   })
+
+
 }
 
 })();
