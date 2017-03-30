@@ -5,9 +5,9 @@
 angular.module('app.core')
 .controller('ArticleController',ArticleController);
 
-ArticleController.$inject = ['$rootScope','$scope','$facebook','$state','data', 'api'];
+ArticleController.$inject = ['$rootScope','$scope','$facebook','$state','Socialshare','data', 'api'];
 
-function ArticleController($rootScope, $scope, $facebook, $state, data, api){
+function ArticleController($rootScope, $scope, $facebook, $state, Socialshare, data, api){
 	var article = $scope.article;
 	article.saveArticle = saveArticle;
 	article.shareArticle = shareArticle;
@@ -36,20 +36,31 @@ function ArticleController($rootScope, $scope, $facebook, $state, data, api){
 
 	}
 
-	function shareArticle(articleObj){
+	function shareArticle(articleObj,toShare){
 		console.log("articleObj ::: ",articleObj);
-		$facebook.ui({
-			// method: 'share',
-  	// 		href: 'https://developers.facebook.com/docs/',
-			method: 'feed',
-			picture: api.imagePath + articleObj.path,
-			name: articleObj.title,
-			link: 'https://developers.facebook.com/docs/',
-			caption: articleObj.content,
-		})
-		.then(function(response){
-			console.log(response);
-		});
+		if(toShare == 'gplus'){
+      Socialshare.share({
+        'provider': 'google',
+        'attrs': {
+          'socialshareUrl': 'http://swiftpen.herokuapp.com' //#/article/'+articleObj.id,
+        }
+      });
+    }
+
+    if(toShare == 'facebook'){
+      $facebook.ui({
+      	method: 'feed',
+      	picture: api.imagePath + articleObj.path,
+      	name: articleObj.title,
+      	link: 'http://swiftpen.herokuapp.com/#/article/'+'articleObj.id',
+      	caption: articleObj.content,
+      })
+      .then(function(response){
+      	console.log(response);
+      });
+    }
+
+
 	}
 
 	function activateArticle(articleObj) {

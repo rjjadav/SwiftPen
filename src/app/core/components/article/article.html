@@ -44,7 +44,25 @@
     </div>
 
     <div ng-hide="article.display == 'manage'">
-      <a href="javascript:void(0)" ng-click="article.saveArticle(article.article)" ng-hide="article.display == 'saved'""><span ng-if="!article.article.saved">Save</span> <span ng-if="article.article.saved">Saved</span></a>
-      <a href="javascript:void(0)" class="ml-20" ng-click="article.shareArticle(article.article)">Share</a>
+      <a href="javascript:void(0)" ng-click="article.saveArticle(article.article)" ng-hide="article.display == 'saved'"><span ng-if="!article.article.saved">Save</span> <span ng-if="article.article.saved">Saved</span></a>
+      <a href="javascript:void(0)" class="ml-20"  uib-popover-template="'share.html'">Share</a>
+      <!--<a href="javascript:void(0)" class="ml-20" ng-click="article.shareArticle(article.article)">Share</a>-->
+      <!--uib-popover="{{article.article.id}}"-->
     </div>
 	</div>
+
+<script type="text/ng-template" id="share.html">
+  <button class="btn btn-block btn-social btn-facebook" ng-click="article.shareArticle(article.article,'facebook')">
+			<span class="social-icon">
+				<i class="fa fa-facebook"></i>
+			</span>
+    Share using Facebook
+  </button>
+
+  <button class="btn btn-block btn-social btn-gplus" ng-click="article.shareArticle(article.article,'gplus')">
+			<span class="social-icon">
+				<i class="fa fa-google-plus"></i>
+			</span>
+    Share using Google
+  </button>
+</script>

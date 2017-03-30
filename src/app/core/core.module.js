@@ -16,6 +16,7 @@ angular.module('app.core',[
 	'ngFacebook',
 	'googleplus',
   'ngTagsInput',
+  '720kb.socialshare',
 ]);
 
 })();
