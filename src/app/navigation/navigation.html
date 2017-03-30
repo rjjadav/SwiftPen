@@ -46,25 +46,46 @@
 				<!--<li ng-repeat="category in nav.categories | limitTo:3" ui-sref-active="active">-->
 					<!--<a ui-sref="app.main_listing({category : category.name})">{{category.name}}</a>-->
 				<!--</li>-->
-        <li class="btn-group cursor-pointer" uib-dropdown  dropdown-append-to-body>
+        <!--<li class="btn-group cursor-pointer" uib-dropdown  dropdown-append-to-body>-->
+          <!--<a id="btn-append-to-single-button" uib-dropdown-toggle>-->
+            <!--Categories  <span class="caret"></span>-->
+          <!--</a>-->
+
+          <!--<ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button" >-->
+            <!--<li class="dropdown-header" ng-repeat-start="(key,value) in nav.categories"><h4>{{key}}</h4></li>-->
+            <!--<li role="menuitem" ng-repeat-end ng-repeat="category in value | limitTo:nav.categories.length:3" ui-sref-active="active">-->
+              <!--<a ui-sref="app.main_listing({category : category})">{{category}}</a>-->
+            <!--</li>-->
+          <!--</ul >-->
+        <!--</li>-->
+
+        <li class="btn-group cursor-pointer" uib-dropdown  dropdown-append-to-body ng-repeat="(key,value) in nav.categories">
           <a id="btn-append-to-single-button" uib-dropdown-toggle>
-            Categories  <span class="caret"></span>
+            {{key}}  <span class="caret"></span>
           </a>
 
           <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button" >
-            <li class="dropdown-header" ng-repeat-start="(key,value) in nav.categories"><h4>{{key}}</h4></li>
-            <li role="menuitem" ng-repeat-end ng-repeat="category in value | limitTo:nav.categories.length:3" ui-sref-active="active">
+
+            <li role="menuitem" ng-repeat="category in value" ui-sref-active="active">
               <a ui-sref="app.main_listing({category : category})">{{category}}</a>
             </li>
-          </ul >
+          </ul>
         </li>
 			</ul>
 
-			<ul class="nav navbar-nav hidden-xs hidden-sm pull-right">
-				<li ui-sref-active="active"><a ui-sref="app.main_dashboard" ng-if="loggedIn && (role == 'admin' || role == 'subadmin')">Post Article</a></li>
-				<li ui-sref-active="active"><a ui-sref="app.main_category" ng-if="loggedIn && (role == 'admin' || role == 'subadmin')">Category</a></li>
-        <li ui-sref-active="active"><a ui-sref="app.main_manage-articles" ng-if="loggedIn && role == 'admin'">Manage Articles</a></li>
-				<li ui-sref-active="active"><a ui-sref="app.main_saved-articles" ng-if="loggedIn">Saved Articles</a></li>
+			<ul class="nav navbar-nav hidden-xs hidden-sm pull-right" ng-if="loggedIn">
+				<li class="btn-group cursor-pointer" uib-dropdown  dropdown-append-to-body >
+          <a id="btn-append-to-single-button1" uib-dropdown-toggle>
+            More  <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button1">
+            <li ui-sref-active="active"><a ui-sref="app.main_dashboard" ng-if="loggedIn && (role == 'admin' || role == 'subadmin')">Post Article</a></li>
+            <li ui-sref-active="active"><a ui-sref="app.main_category" ng-if="loggedIn && (role == 'admin' || role == 'subadmin')">Category</a></li>
+            <li ui-sref-active="active"><a ui-sref="app.main_manage-articles" ng-if="loggedIn && role == 'admin'">Manage Articles</a></li>
+            <li ui-sref-active="active"><a ui-sref="app.main_saved-articles" ng-if="loggedIn">Saved Articles</a></li>
+          </ul>
+        </li>
+
 			</ul>
 
       <div class="col-sm-12 col-xs-12">
