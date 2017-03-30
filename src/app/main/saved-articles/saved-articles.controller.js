@@ -16,15 +16,21 @@
     sac.articlesList = undefined;
     sac.savedArticles = undefined;
 
+
     sac.getAllArticles();
     function getAllArticles(){
       // data.post(api.getArticles, {category: null}, true)
       data.post(api.getSavedArticle, null, true)
         .then(function(response){
           // sac.articlesList = response.data.articles;
-          sac.savedArticles = response.data.articles.filter(function(item, pos, array){
-            return array.map(function(mapItem){ return mapItem['id']; }).indexOf(item['id']) === pos;
-          });
+          if(response.data.articles){
+            sac.savedArticles = response.data.articles.filter(function(item, pos, array){
+              return array.map(function(mapItem){ return mapItem['id']; }).indexOf(item['id']) === pos;
+            });
+          }else{
+            sac.savedArticles = [];
+          }
+
 
           // var uniqueArray = response.data.articles.filter(function(item, pos, array){
           //   return array.map(function(mapItem){ return mapItem['id']; }).indexOf(item['id']) === pos;
@@ -54,6 +60,7 @@
               console.log("false");
             }
           })
+
 
 
           var allArticles = sac.articlesList
