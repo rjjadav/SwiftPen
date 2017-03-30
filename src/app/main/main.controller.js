@@ -6,7 +6,12 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout, toastr) {
+  function MainController($rootScope) {
     var main = this;
+    main.closeSidebar = closeSidebar;
+
+    function closeSidebar(){
+      $rootScope.$broadcast('close_sidebar');
+    }
   }
 })();

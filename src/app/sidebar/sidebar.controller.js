@@ -57,8 +57,12 @@ function SidebarController($rootScope, $state, categories, constants){
   function goto(){
     sidebar.closeNav();
     $state.go();
-
   }
+
+  $rootScope.$on('close_sidebar',function(){
+    console.log("sidebar closed");
+    sidebar.closeNav();
+  })
 }
 
 })();

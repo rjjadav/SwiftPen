@@ -11,6 +11,7 @@ function ArticleDetailsController($stateParams, data, api){
 
 
 	article.getArticle = getArticle;
+	article.articleObj = undefined;
 
   article.articleId = $stateParams.articleId;
 
@@ -19,6 +20,7 @@ function ArticleDetailsController($stateParams, data, api){
 	  data.post(api.getArticles, {articleId: article.articleId}, true)
       .then(function (response) {
         console.log(response);
+
       })
       .catch();
   }

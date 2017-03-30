@@ -44,7 +44,7 @@
     </div>
 
     <div ng-hide="article.display == 'manage'">
-      <a href="javascript:void(0)" ng-click="article.saveArticle(article.article)"><span ng-if="!article.article.saved">Save</span> <span ng-if="article.article.saved">Saved</span></a>
+      <a href="javascript:void(0)" ng-click="article.saveArticle(article.article)" ng-hide="article.display == 'saved'""><span ng-if="!article.article.saved">Save</span> <span ng-if="article.article.saved">Saved</span></a>
       <a href="javascript:void(0)" class="ml-20" ng-click="article.shareArticle(article.article)">Share</a>
     </div>
 	</div>

@@ -1,3 +1,6 @@
 <div class="container" id="listing">
   <articles display="'manage'" data="mas.articlesList" ng-if="mas.articlesList"></articles>
+  <div class="col-md-12 text-center" ng-if="!mas.articlesList">
+    <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+  </div>
 </div>

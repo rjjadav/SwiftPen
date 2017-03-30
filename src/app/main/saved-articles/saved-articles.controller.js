@@ -22,7 +22,15 @@
       data.post(api.getSavedArticle, null, true)
         .then(function(response){
           // sac.articlesList = response.data.articles;
-          sac.savedArticles = response.data.articles;
+          sac.savedArticles = response.data.articles.filter(function(item, pos, array){
+            return array.map(function(mapItem){ return mapItem['id']; }).indexOf(item['id']) === pos;
+          });
+
+          // var uniqueArray = response.data.articles.filter(function(item, pos, array){
+          //   return array.map(function(mapItem){ return mapItem['id']; }).indexOf(item['id']) === pos;
+          // })
+          // console.log(uniqueArray);
+
           // sac.getSavedArticles();
         })
     }

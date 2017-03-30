@@ -26,10 +26,10 @@
 
   <hr/>
 
-  <ul ng-if="loggedIn && role == 'admin'">
-    <li ui-sref-active="active"><a ui-sref="app.main_dashboard" ng-click="sidebar.closeNav()">Post Article</a></li>
-    <li ui-sref-active="active"><a ui-sref="app.main_category" ng-click="sidebar.closeNav()">Category</a></li>
-    <li ui-sref-active="active"><a ui-sref="app.main_manage-articles" ng-click="sidebar.closeNav()">Manage Articles</a></li>
+  <ul ng-if="loggedIn">
+    <li ui-sref-active="active" ng-if="(role == 'admin' || role == 'subadmin')"><a ui-sref="app.main_dashboard" ng-click="sidebar.closeNav()">Post Article</a></li>
+    <li ui-sref-active="active" ng-if="(role == 'admin' || role == 'subadmin')"><a ui-sref="app.main_category" ng-click="sidebar.closeNav()">Category</a></li>
+    <li ui-sref-active="active" ng-if="(role == 'admin' || role == 'subadmin')"><a ui-sref="app.main_manage-articles" ng-click="sidebar.closeNav()">Manage Articles</a></li>
     <li ui-sref-active="active"><a ui-sref="app.main_saved-articles" ng-click="sidebar.closeNav()">Saved Articles</a></li>
   </ul>
 

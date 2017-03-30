@@ -15,15 +15,18 @@ function ListingController($stateParams, data, api){
 
   listing.articlesList = undefined;
 	listing.category = $stateParams.category || 'all';
+	listing.loading = false;
 	console.log(listing.category);
 
   listing.getAllArticles();
   function getAllArticles(){
+    listing.loading = true;
     if(listing.category == 'all') listing.category = null;
     data.post(api.getArticles, {category: listing.category}, true)
       .then(function(response){
         listing.articlesList = response.data.articles;
         listing.getSavedArticles();
+        listing.loading = false;
       })
   }
 
