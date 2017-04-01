@@ -12,6 +12,7 @@ angular.module('app.main',[
   'app.main.manage-articles',
 
   'app.main.test',
+  'app.main.about',
 ])
 .config(config);
 
